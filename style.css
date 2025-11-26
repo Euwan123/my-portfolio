@@ -1,3 +1,4 @@
+/* General */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,6 +14,40 @@ body {
     color: #f0f0f0;
 }
 
+/* Navigation */
+nav {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a, nav ul li button {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+nav ul li a:hover, nav ul li button:hover {
+    color: #000;
+}
+
 /* Header */
 header {
     text-align: center;
@@ -21,25 +56,17 @@ header {
     color: white;
 }
 
-header button {
-    padding: 10px 20px;
-    margin-top: 15px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: white;
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-header button:hover {
-    background-color: #f0f0f0;
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
 
 /* Sections */
 section {
-    padding: 30px 20px;
-    max-width: 800px;
+    padding: 40px 20px;
+    max-width: 900px;
     margin: 20px auto;
     background-color: #f4f4f4;
     border-radius: 10px;
@@ -49,18 +76,58 @@ section {
     background-color: #2e2e2e;
 }
 
+/* Skills */
+.skills .skill {
+    margin-bottom: 15px;
+}
+
+.skill-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+}
+
+.skill-bar div {
+    height: 100%;
+    background-color: #4CAF50;
+    text-align: right;
+    padding-right: 5px;
+    color: white;
+    line-height: 20px;
+}
+
 /* Projects */
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
 .project {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    width: 250px;
     background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
 }
 
 .dark-mode .project {
     background-color: #3a3a3a;
-    border-color: #555;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.project img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.project:hover {
+    transform: translateY(-5px);
 }
 
 .project a {
@@ -73,10 +140,20 @@ section {
     text-decoration: underline;
 }
 
-/* Links */
-a {
-    color: #4CAF50;
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    margin-top: 20px;
 }
-a:hover {
-    color: #388E3C;
+
+/* Responsive */
+@media(max-width: 768px) {
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
+
