@@ -82,21 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const reflectionBtns = document.querySelectorAll('.reflection-btn');
     const reflectionContents = document.querySelectorAll('.reflection-content');
 
-    reflectionBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetContent = btn.getAttribute('data-reflection');
-            
-            reflectionBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            reflectionContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.getAttribute('data-content') === targetContent) {
-                    content.classList.add('active');
-                }
+    if (reflectionBtns.length > 0 && reflectionContents.length > 0) {
+        reflectionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetContent = btn.getAttribute('data-reflection');
+                
+                reflectionBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                reflectionContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.getAttribute('data-content') === targetContent) {
+                        content.classList.add('active');
+                    }
+                });
             });
         });
-    });
+
+        reflectionBtns[0].click();
+    }
 });
 
 window.addEventListener('scroll', () => {
