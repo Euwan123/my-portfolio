@@ -319,15 +319,13 @@ h3 {
 .reflection-content h3 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    font-size: 1.4rem;
-    line-height: 1.4;
+    font-size: 1.3rem;
 }
 
 .reflection-content p {
     color: var(--text-secondary-light);
     line-height: 1.8;
     font-size: 1rem;
-    text-align: left;
 }
 
 .skills {
