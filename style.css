@@ -229,7 +229,7 @@ h3 {
 }
 
 .about-content {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -257,11 +257,14 @@ h3 {
 }
 
 .reflection-buttons {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     justify-content: center;
     margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .reflection-btn {
@@ -293,7 +296,7 @@ h3 {
     border-radius: var(--border-radius);
     padding: 2.5rem;
     box-shadow: 0 5px 20px var(--shadow-light);
-    min-height: 250px;
+    min-height: 300px;
 }
 
 .reflection-content {
@@ -319,13 +322,15 @@ h3 {
 .reflection-content h3 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
 }
 
 .reflection-content p {
     color: var(--text-secondary-light);
     line-height: 1.8;
     font-size: 1rem;
+    text-align: left;
 }
 
 .skills {
