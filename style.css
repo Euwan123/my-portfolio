@@ -13,6 +13,9 @@
     --text-secondary-light: #546e7a;
     --shadow-light: rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    --border-radius: 20px;
+    --border-radius-sm: 15px;
+    --border-radius-xs: 10px;
 }
 
 body {
@@ -88,7 +91,7 @@ nav ul li a:hover::after {
 .theme-toggle {
     background: none;
     border: 2px solid var(--primary-color);
-    border-radius: 50px;
+    border-radius: 30px;
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 1.2rem;
@@ -229,7 +232,7 @@ h3 {
 
 .skill-bar {
     background-color: #e0e0e0;
-    border-radius: 10px;
+    border-radius: var(--border-radius-xs);
     overflow: hidden;
     height: 12px;
 }
@@ -241,7 +244,7 @@ h3 {
 .skill-bar div {
     height: 100%;
     background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-    border-radius: 10px;
+    border-radius: var(--border-radius-xs);
     transition: width 1s ease-out;
 }
 
@@ -262,7 +265,7 @@ h3 {
     padding: 0.5rem 1.5rem;
     background-color: var(--primary-color);
     color: white;
-    border-radius: 50px;
+    border-radius: 30px;
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -276,7 +279,7 @@ h3 {
 
 .project {
     background-color: var(--bg-light);
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 5px 20px var(--shadow-light);
     transition: var(--transition);
@@ -350,7 +353,7 @@ h3 {
 .contact-item {
     padding: 1rem;
     background-color: var(--bg-section-light);
-    border-radius: 10px;
+    border-radius: var(--border-radius-xs);
     border-left: 4px solid var(--primary-color);
 }
 
@@ -370,6 +373,37 @@ h3 {
     color: var(--primary-color);
 }
 
+.reflection-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.reflection-question {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 15px var(--shadow-light);
+}
+
+.reflection-question h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.reflection-question p {
+    color: var(--text-secondary-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.reflection-question p:last-child {
+    margin-bottom: 0;
+}
+
 footer {
     text-align: center;
     padding: 2rem;
@@ -380,16 +414,16 @@ footer {
 
 @media (max-width: 768px) {
     nav ul {
-        gap: 1rem;
-        font-size: 0.9rem;
+        gap: 0.8rem;
+        font-size: 0.85rem;
     }
 
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     h2 {
@@ -409,7 +443,47 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .reflection-question {
+        padding: 1.5rem;
+    }
+
+    .reflection-question h3 {
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 3rem 1.5rem;
+    }
 }
-        justify-content: center;
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+    }
+
+    .reflection-question {
+        padding: 1rem;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
     }
 }
