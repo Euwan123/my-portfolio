@@ -1,13 +1,22 @@
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode);
+    
+    try {
+        localStorage.setItem('darkMode', isDarkMode);
+    } catch (e) {
+        console.warn('localStorage not available:', e);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('darkMode');
-    if (savedTheme === 'true') {
-        document.body.classList.add('dark-mode');
+    try {
+        const savedTheme = localStorage.getItem('darkMode');
+        if (savedTheme === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+    } catch (e) {
+        console.warn('localStorage not available:', e);
     }
 
     const skillBars = document.querySelectorAll('.skill-bar div');
@@ -19,7 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.width = entry.target.style.width || '0%';
+                const skillBar = entry.target;
+                const width = skillBar.style.width;
+                skillBar.style.setProperty('--skill-width', width);
+                skillBar.classList.add('animated');
+                observer.unobserve(skillBar);
             }
         });
     }, observerOptions);
@@ -43,13 +56,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
 
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
-        nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
     } else {
-        nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        nav.style.boxShadow = '0 2px 10px var(--shadow-light)';
     }
+});
+
+const fadeInElements = document.querySelectorAll('section');
+const fadeInObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+fadeInElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeInObserver.observe(el);
 });
