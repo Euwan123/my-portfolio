@@ -1,7 +1,7 @@
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode');
-    
+
     try {
         localStorage.setItem('darkMode', isDarkMode);
     } catch (e) {
@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = anchor.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const navHeight = document.querySelector('nav').offsetHeight;
                 const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         let current = '';
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
