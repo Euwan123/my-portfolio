@@ -229,6 +229,7 @@ h3 {
 }
 
 .about-content {
+    max-width: 1100px;
     max-width: 900px;
     margin: 0 auto 3rem auto;
 }
@@ -251,19 +252,56 @@ h3 {
     border-radius: 20px;
 }
 
+.flashcards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
 .reflection-container {
     max-width: 900px;
     margin: 0 auto;
 }
 
+.flashcard {
+    perspective: 1000px;
+    height: 400px;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: 0 8px 30px var(--shadow-light);
 .reflection-buttons {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     margin-bottom: 2rem;
 }
 
+.flashcard-front {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
 .reflection-btn {
     padding: 0.75rem 1.5rem;
     background-color: var(--primary-color);
@@ -277,17 +315,27 @@ h3 {
     font-family: 'Poppins', sans-serif;
 }
 
+.flashcard-back {
+    background-color: var(--bg-light);
+    transform: rotateY(180deg);
 .reflection-btn:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--shadow-light);
 }
 
+.flashcard-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 .reflection-btn.active {
     background-color: var(--primary-dark);
     box-shadow: 0 5px 15px var(--shadow-light);
 }
 
+.flashcard h3 {
+    color: inherit;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 .reflection-display {
     background-color: var(--bg-light);
     border-radius: var(--border-radius);
@@ -296,15 +344,23 @@ h3 {
     min-height: 250px;
 }
 
+.flashcard-front h3 {
+    color: white;
 .reflection-content {
     display: none;
 }
 
+.flashcard-back h3 {
+    color: var(--primary-color);
 .reflection-content.active {
     display: block;
     animation: fadeIn 0.5s ease;
 }
 
+.flashcard p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    text-align: left;
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -316,14 +372,35 @@ h3 {
     }
 }
 
+.flashcard-front p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.1rem;
+    font-weight: 500;
 .reflection-content h3 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
 }
 
+.flashcard-back p {
 .reflection-content p {
     color: var(--text-secondary-light);
+    font-size: 0.95rem;
+}
+
+.flip-hint {
+    margin-top: auto;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.flashcard-front .flip-hint {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.flashcard-back .flip-hint {
+    color: var(--primary-color);
     line-height: 1.8;
     font-size: 1rem;
 }
@@ -546,14 +623,25 @@ footer {
         padding: 3rem 1.5rem;
     }
 
+    .about-content {
+        column-count: 1;
+    }
+
+    .flashcards-container {
+        grid-template-columns: 1fr;
     .reflection-buttons {
         flex-direction: column;
     }
 
+    .flashcard {
+        height: 450px;
     .reflection-btn {
         width: 100%;
     }
 
+    .flashcard-front,
+    .flashcard-back {
+        padding: 2rem;
     .reflection-display {
         padding: 1.5rem;
     }
@@ -583,5 +671,16 @@ footer {
 
     .contact-info {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .about-content {
+        column-count: 2;
+        column-gap: 3rem;
+    }
+    
+    .about-content p {
+        break-inside: avoid;
     }
 }
