@@ -184,7 +184,7 @@ header h1 {
 
 section {
     padding: 4rem 2rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -208,15 +208,64 @@ h3 {
 
 #about p {
     font-size: 1.05rem;
-    line-height: 1.9;
+    line-height: 1.8;
     color: var(--text-secondary-light);
     text-align: left;
-    max-width: 900px;
-    margin: 0 auto 1.2rem auto;
+    margin: 0 0 1rem 0;
 }
 
 #about p:last-of-type {
     margin-bottom: 0;
+}
+
+.about-content {
+    max-width: 1100px;
+    margin: 0 auto 3rem auto;
+    column-count: 2;
+    column-gap: 3rem;
+}
+
+.about-content p {
+    break-inside: avoid;
+    margin-bottom: 1.2rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 3px 15px var(--shadow-light);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-light);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .skills {
@@ -464,6 +513,14 @@ footer {
 
     section {
         padding: 3rem 1.5rem;
+    }
+
+    .about-content {
+        column-count: 1;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
     }
 }
 
