@@ -8,50 +8,87 @@
 </head>
 <body>
 
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button onclick="toggleTheme()">Toggle Theme</button></li>
+        </ul>
+    </nav>
+
+    <!-- Header / Landing -->
     <header>
+        <img src="profile.jpg" alt="Euwan Abogadie" class="profile-img">
         <h1>Euwan Abogadie</h1>
         <p>Welcome to my portfolio! A221</p>
-        <button onclick="toggleTheme()">Toggle Theme</button>
     </header>
 
+    <!-- About Me -->
     <section id="about">
         <h2>About Me</h2>
-        <p>Hi! I am Euwan Abogadie, a passionate web developer and tech enthusiast from A221. I love building interactive websites and learning new technologies. I am currently exploring front-end and full-stack development.</p>
-        <ul>
-            <li>Skills: HTML, CSS, JavaScript, Git</li>
-            <li>Education: A222</li>
-            <li>Interests: Coding, Gaming, Tech Blogs</li>
-        </ul>
+        <p>Hi! I am Euwan Abogadie, a passionate web developer from A221. I love building interactive websites and exploring full-stack development. Here’s a quick overview of my skills and interests:</p>
+        <div class="skills">
+            <div class="skill">
+                <p>HTML</p>
+                <div class="skill-bar"><div style="width: 90%"></div></div>
+            </div>
+            <div class="skill">
+                <p>CSS</p>
+                <div class="skill-bar"><div style="width: 85%"></div></div>
+            </div>
+            <div class="skill">
+                <p>JavaScript</p>
+                <div class="skill-bar"><div style="width: 75%"></div></div>
+            </div>
+            <div class="skill">
+                <p>Git</p>
+                <div class="skill-bar"><div style="width: 80%"></div></div>
+            </div>
+        </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects">
         <h2>Projects</h2>
-        <div class="project">
-            <h3>Portfolio Website</h3>
-            <p>My personal website to showcase my skills and projects.</p>
-            <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-            <a href="#">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Todo App</h3>
-            <p>A simple todo application to organize tasks efficiently.</p>
-            <p><strong>Tech:</strong> JavaScript, LocalStorage</p>
-            <a href="#">View Project</a>
-        </div>
-        <div class="project">
-            <h3>Calculator</h3>
-            <p>A web-based calculator for basic arithmetic operations.</p>
-            <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-            <a href="#">View Project</a>
+        <div class="projects-container">
+            <div class="project">
+                <img src="project1.jpg" alt="Portfolio Website">
+                <h3>Portfolio Website</h3>
+                <p>My personal website to showcase skills and projects.</p>
+                <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project">
+                <img src="project2.jpg" alt="Todo App">
+                <h3>Todo App</h3>
+                <p>A simple app to organize tasks efficiently.</p>
+                <p><strong>Tech:</strong> JavaScript, LocalStorage</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project">
+                <img src="project3.jpg" alt="Calculator">
+                <h3>Calculator</h3>
+                <p>Web-based calculator for basic arithmetic operations.</p>
+                <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                <a href="#">View Project</a>
+            </div>
         </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
         <h2>Contact</h2>
         <p>Email: euwan.abogadie@example.com</p>
         <p>LinkedIn: <a href="https://linkedin.com/in/euwan" target="_blank">linkedin.com/in/euwan</a></p>
         <p>GitHub: <a href="https://github.com/euwan123" target="_blank">github.com/euwan123</a></p>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Euwan Abogadie | A221</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
