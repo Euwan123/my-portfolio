@@ -1,7 +1,6 @@
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode');
-    
     try {
         localStorage.setItem('darkMode', isDarkMode);
     } catch (e) {
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
+            
             if (window.pageYOffset >= sectionTop - 200) {
                 current = section.getAttribute('id');
             }
@@ -98,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         });
-
         reflectionBtns[0].click();
     }
 });
