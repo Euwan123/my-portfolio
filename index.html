@@ -8,274 +8,392 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     <nav>
         <div class="nav-container">
-            <div class="logo">EGA</div>
+            <div class="logo">
+                <i class="fas fa-code"></i> EGA
+            </div>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#reflection">Reflection</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#skills"><i class="fas fa-laptop-code"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
+                <li><a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
             <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
-                <span class="sun">☀️</span>
-                <span class="moon">🌙</span>
+                <div class="toggle-track">
+                    <div class="toggle-thumb"></div>
+                </div>
             </button>
         </div>
     </nav>
 
+    <button class="scroll-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <header>
-        <video autoplay muted loop class="header-video">
+        <div class="particles" id="particles"></div>
+        <video autoplay muted loop playsinline class="header-video">
             <source src="background.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
 
         <div class="header-content">
             <div class="profile-img-wrapper">
-                <img src="profile.jpg" alt="Euwan Gabriel Abogadie" class="profile-img" onerror="this.src='https://via.placeholder.com/180/4CAF50/ffffff?text=EGA'">
+                <div class="profile-frame">
+                    <div class="frame-corner frame-tl"></div>
+                    <div class="frame-corner frame-tr"></div>
+                    <div class="frame-corner frame-bl"></div>
+                    <div class="frame-corner frame-br"></div>
+                    <img src="profile.jpg" alt="Euwan Gabriel Abogadie" class="profile-img" onerror="this.src='https://via.placeholder.com/180/4CAF50/ffffff?text=EGA'">
+                </div>
             </div>
-            <h1>Euwan Gabriel B. Abogadie</h1>
-            <p class="subtitle">Software Developer & Tech Enthusiast</p>
-            <p class="location">Mapúa Malayan Colleges Mindanao | A221</p>
+            <h1 class="glitch" data-text="Euwan Gabriel B. Abogadie">Euwan Gabriel B. Abogadie</h1>
+            <p class="subtitle typing-effect">Software Developer & Tech Enthusiast</p>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
 
             <div class="social-links">
-                <!-- GitHub -->
-                <a href="https://github.com/euwan123" target="_blank" aria-label="GitHub">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 
-                        0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234
-                        c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756
-                        -1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 
-                        1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604
-                        -2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 
-                        1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 
-                        1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 
-                        1.02.005 2.047.138 3.006.404 
-                        2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176 
-                        .77.84 1.235 1.911 1.235 3.221 
-                        0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293
-                        c0 .319.192.694.801.576 
-                        4.765-1.589 8.199-6.086 8.199-11.386 
-                        0-6.627-5.373-12-12-12z"/>
-                    </svg>
+                <a href="https://github.com/euwan123" target="_blank" aria-label="GitHub" class="social-btn">
+                    <i class="fab fa-github"></i>
                 </a>
-
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank" aria-label="LinkedIn">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 
-                        2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 
-                        19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764 
-                        s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 
-                        1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 
-                        0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 
-                        7 2.476v6.759z"/>
-                    </svg>
+                <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank" aria-label="LinkedIn" class="social-btn">
+                    <i class="fab fa-linkedin"></i>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- ABOUT ME -->
     <section id="about">
-        <h2>About Me</h2>
+        <div class="section-header">
+            <h2><i class="fas fa-user-circle"></i> About Me</h2>
+        </div>
         <div class="about-content">
-            <p>
-                Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
-                Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
-                software can make life easier, which is why I got into programming in the first place.
-            </p>
+            <div class="about-text">
+                <p>
+                    Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
+                    Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
+                    software can make life easier, which is why I got into programming in the first place.
+                </p>
 
-            <p>
-                What really excites me is creating applications that not only work well but also 
-                look good and feel intuitive to use. Most of my work revolves around 
-                <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
-                Windows Forms applications with polished GUIs. I also work extensively with 
-                <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
-                real problems.
-            </p>
+                <p>
+                    What really excites me is creating applications that not only work well but also 
+                    look good and feel intuitive to use. Most of my work revolves around 
+                    <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
+                    Windows Forms applications with polished GUIs. I also work extensively with 
+                    <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
+                    real problems.
+                </p>
 
-            <p>
-                I'm the kind of person who gets genuinely excited about making buttons look just 
-                right and tweaking layouts until everything feels natural. Whether it's a school project 
-                or something I'm working on in my free time, I always try to balance functionality with 
-                thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
-            </p>
-        </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills">
-            <div class="skill"><div class="skill-header"><span>Java</span><span>85%</span></div><div class="skill-bar"><div style="width: 85%"></div></div></div>
-            <div class="skill"><div class="skill-header"><span>C#</span><span>70%</span></div><div class="skill-bar"><div style="width: 70%"></div></div></div>
-            <div class="skill"><div class="skill-header"><span>C++</span><span>60%</span></div><div class="skill-bar"><div style="width: 60%"></div></div></div>
-            <div class="skill"><div class="skill-header"><span>HTML</span><span>50%</span></div><div class="skill-bar"><div style="width: 50%"></div></div></div>
-            <div class="skill"><div class="skill-header"><span>CSS</span><span>45%</span></div><div class="skill-bar"><div style="width: 45%"></div></div></div>
-            <div class="skill"><div class="skill-header"><span>JavaScript</span><span>40%</span></div><div class="skill-bar"><div style="width: 40%"></div></div></div>
-            <div class="skill"><div class="skill-header"><span>Git & GitHub</span><span>65%</span></div><div class="skill-bar"><div style="width: 65%"></div></div></div>
-        </div>
-
-        <div class="interests">
-            <h3>Expertise & Interests</h3>
-            <div class="interest-tags">
-                <span>GUI Design</span>
-                <span>C# Development</span>
-                <span>Java Applications</span>
-                <span>Visual Studio 2022</span>
-                <span>IntelliJ IDEA</span>
-                <span>Gaming</span>
-                <span>Tech Blogs</span>
+                <p>
+                    I'm the kind of person who gets genuinely excited about making buttons look just 
+                    right and tweaking layouts until everything feels natural. Whether it's a school project 
+                    or something I'm working on in my free time, I always try to balance functionality with 
+                    thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>10+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code"></i>
+                    <h3>7+</h3>
+                    <p>Technologies</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-award"></i>
+                    <h3>5+</h3>
+                    <p>Achievements</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="projects-container">
+    <section id="skills">
+        <div class="section-header">
+            <h2><i class="fas fa-code-branch"></i> Technical Skills</h2>
+        </div>
+        <div class="skills">
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-java"></i> Java</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fas fa-hashtag"></i> C#</span>
+                    <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 70%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fas fa-copyright"></i> C++</span>
+                    <span>60%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 60%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-html5"></i> HTML</span>
+                    <span>50%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 50%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-css3-alt"></i> CSS</span>
+                    <span>45%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 45%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-js"></i> JavaScript</span>
+                    <span>40%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 40%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                    <span>65%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
 
-            <!-- StrokeSense -->
-            <div class="project project-new">
+        <div class="interests">
+            <h3><i class="fas fa-heart"></i> Expertise & Interests</h3>
+            <div class="interest-tags">
+                <span><i class="fas fa-paint-brush"></i> GUI Design</span>
+                <span><i class="fas fa-code"></i> C# Development</span>
+                <span><i class="fab fa-java"></i> Java Applications</span>
+                <span><i class="fas fa-window-maximize"></i> Visual Studio 2022</span>
+                <span><i class="fas fa-lightbulb"></i> IntelliJ IDEA</span>
+                <span><i class="fas fa-gamepad"></i> Gaming</span>
+                <span><i class="fas fa-blog"></i> Tech Blogs</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header">
+            <h2><i class="fas fa-rocket"></i> My Projects</h2>
+        </div>
+        <div class="projects-container">
+            <div class="project">
+                <div class="project-glow"></div>
                 <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
                     <div class="project-header">
                         <h3>StrokeSense - Baybayin Interactive Learning</h3>
-                        <span class="project-date">December 2025</span>
+                        <span class="project-date"><i class="far fa-calendar"></i> December 2025</span>
                     </div>
                     <p>
                         StrokeSense brings the beauty of the ancient Baybayin script to life with interactive AI technology,
                         making learning engaging, personalized, and fun.
                     </p>
-                    <p class="tech-stack"><strong>Tech:</strong> HTML, CSS, JavaScript, GitHub Pages</p>
-                    <a href="https://euwan123.github.io/strokesense-landing-page/" target="_blank" class="project-link project-button">View Live Website 🌐</a>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
+                    <a href="https://euwan123.github.io/strokesense-landing-page/" target="_blank" class="project-button">
+                        <i class="fas fa-external-link-alt"></i> View Live Website
+                    </a>
                 </div>
             </div>
 
-            <!-- PlanIT -->
             <div class="project">
+                <div class="project-glow"></div>
                 <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
                     <div class="project-header">
                         <h3>PlanIT - Event Management System</h3>
-                        <span class="project-date">September 2025</span>
+                        <span class="project-date"><i class="far fa-calendar"></i> September 2025</span>
                     </div>
                     <p>
                         A comprehensive event management system developed with Group 7. Features event planning, scheduling,
                         and coordination tools with a modern GUI interface.
                     </p>
-                    <p class="tech-stack"><strong>Tech:</strong> C#, Windows Forms, Visual Studio 2022</p>
-                    <a href="https://github.com/Euwan123/Group-7-System-PlanIT" target="_blank" class="project-link project-button">View Repository 💻</a>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> C#, Windows Forms, Visual Studio 2022</p>
+                    <a href="https://github.com/Euwan123/Group-7-System-PlanIT" target="_blank" class="project-button">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
                 </div>
             </div>
 
-            <!-- Portfolio Website -->
             <div class="project">
+                <div class="project-glow"></div>
                 <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
                     <div class="project-header">
                         <h3>Portfolio Website</h3>
-                        <span class="project-date">November 2025</span>
+                        <span class="project-date"><i class="far fa-calendar"></i> November 2025</span>
                     </div>
                     <p>
                         My personal portfolio website showcasing my skills, projects, and experience. 
                         Features a responsive design with dark mode support and smooth animations.
                     </p>
-                    <p class="tech-stack"><strong>Tech:</strong> HTML, CSS, JavaScript, GitHub Pages</p>
-                    <a href="https://github.com/Euwan123/my-portfolio" target="_blank" class="project-link project-button">View Repository 💻</a>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
+                    <a href="https://github.com/Euwan123/my-portfolio" target="_blank" class="project-button">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
                 </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- REFLECTION -->
-    <section id="reflection">
-        <h2>Reflection</h2>
-        <div class="reflection-container">
-            <div class="reflection-buttons">
-                <button class="reflection-btn active" data-reflection="1">Most Important Website Quality</button>
-                <button class="reflection-btn" data-reflection="2">Language to Master Overnight</button>
-                <button class="reflection-btn" data-reflection="3">Developer Motivation</button>
-                <button class="reflection-btn" data-reflection="4">Frontend vs Backend</button>
-            </div>
-
-            <div class="reflection-display">
-                <!-- Reflection 1 -->
-                <div class="reflection-content active" data-content="1">
-                    <h3>What do you think is the most important quality of a website?</h3>
-                    <p>
-                        I believe the most important quality of a website is its user experience. A site can be full of features,
-                        but if users can't navigate or find what they need, it's essentially useless. Good UX combines intuitive 
-                        design, fast loading times, and accessibility to keep users engaged.
-                    </p>
-                </div>
-
-                <!-- Reflection 2 -->
-                <div class="reflection-content" data-content="2">
-                    <h3>If you could master one programming language overnight, which one would it be and why?</h3>
-                    <p>
-                        If I could master one language overnight, it would be Python. Its versatility spans web development, 
-                        machine learning, automation, and more. Python’s clean syntax and massive library ecosystem make it 
-                        perfect for rapid prototyping and solving real-world problems efficiently.
-                    </p>
-                </div>
-
-                <!-- Reflection 3 -->
-                <div class="reflection-content" data-content="3">
-                    <h3>What motivates you to keep learning and improving as a developer?</h3>
-                    <p>
-                        What drives me is the ability to create something from nothing and see it impact people's lives. 
-                        Solving complex problems and building meaningful features reminds me why I started programming. 
-                        The tech field evolves fast—there’s always something new to learn, and that excitement keeps me going.
-                    </p>
-                </div>
-
-                <!-- Reflection 4 -->
-                <div class="reflection-content" data-content="4">
-                    <h3>Do you prefer working on frontend or backend development?</h3>
-                    <p>
-                        I lean more toward frontend development because I enjoy the visual feedback and creative process. 
-                        Seeing my code turn into a polished interface is satisfying. Still, I appreciate backend development 
-                        for its logic and structure—being capable in both makes you a more well-rounded developer.
-                    </p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <section id="achievements">
+        <div class="section-header">
+            <h2><i class="fas fa-medal"></i> Achievements</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Best in Problem Solving & Best Q&A</h3>
+                        <p>Won Best in Problem Solving and Best in Q&A in a coding project competition, demonstrating exceptional analytical and communication skills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>MMCM Cup Champion</h3>
+                        <p>Champion of MMCM Cup Mobile Legends Tournament. Demonstrated strategic thinking, teamwork, and leadership under pressure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <h3>BounceBack Basketball Simulator</h3>
+                        <p>Developed a basketball game simulator solo, winning Best Project, Problem Solving, and Best Q&A awards. Showcased game development and physics simulation skills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>C++ Programming Certificate</h3>
+                        <p>Earned C++ Programming Certificate with an outstanding score of 1371/1380 points, demonstrating mastery of advanced programming concepts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>C++ Crafting Code Participation</h3>
+                        <p>Certificate of Participation in C++ Crafting Code workshop, expanding knowledge in advanced C++ programming techniques and best practices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact">
-        <h2>Get In Touch</h2>
+        <div class="section-header">
+            <h2><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+        </div>
         <p class="contact-intro">
             I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!
         </p>
 
         <div class="contact-info">
             <div class="contact-item">
-                <strong>Email:</strong> 
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <strong>Email</strong> 
                 <a href="mailto:egAbogadie@mcm.edu.ph">egAbogadie@mcm.edu.ph</a>
             </div>
 
             <div class="contact-item">
-                <strong>GCash Donation:</strong> 
+                <div class="contact-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <strong>GCash Donation</strong> 
                 <a href="tel:+639937623375">+63 993 762 3375</a>
             </div>
 
             <div class="contact-item">
-                <strong>Location:</strong> 
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <strong>Location</strong> 
                 <span>Matina Aplaya, Davao City, Philippines</span>
             </div>
 
             <div class="contact-item">
-                <strong>GitHub:</strong> 
+                <div class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <strong>GitHub</strong> 
                 <a href="https://github.com/euwan123" target="_blank">github.com/euwan123</a>
             </div>
 
             <div class="contact-item">
-                <strong>LinkedIn:</strong> 
+                <div class="contact-icon">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <strong>LinkedIn</strong> 
                 <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank">
                     linkedin.com/in/euwan-abogadie
                 </a>
@@ -284,7 +402,10 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Euwan Gabriel B. Abogadie | Mapúa Malayan Colleges Mindanao</p>
+        <div class="footer-content">
+            <p><i class="far fa-copyright"></i> 2024 Euwan Gabriel B. Abogadie | Mapúa Malayan Colleges Mindanao</p>
+            <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
