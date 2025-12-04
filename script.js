@@ -18,58 +18,15 @@ function scrollToTop() {
 document.addEventListener('DOMContentLoaded', () => {
     try {
         const savedTheme = localStorage.getItem('darkMode');
-        if (savedTheme === 'true') {
+        if (savedTheme === null || savedTheme === 'true') {
             document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
         }
     } catch (e) {
         console.warn('localStorage not available:', e);
+        document.body.classList.add('dark-mode');
     }
-
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-        cursorDot.style.opacity = '1';
-
-        cursorOutline.style.left = `${posX}px`;
-        cursorOutline.style.top = `${posY}px`;
-        cursorOutline.style.opacity = '1';
-    });
-
-    document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            cursorDot.style.transform = 'translate(-50%, -50%) scale(2)';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-        });
-    });
-
-    const createParticles = () => {
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = `${Math.random() * 5 + 2}px`;
-            particle.style.height = particle.style.width;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            particlesContainer.appendChild(particle);
-        }
-    };
-
-    createParticles();
 
     const skillBars = document.querySelectorAll('.skill-bar div');
     const observerOptions = {
@@ -141,29 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('nav');
         if (window.scrollY > 50) {
-            nav.style.boxShadow = '0 2px 30px rgba(0, 255, 136, 0.2)';
+            if (document.body.classList.contains('dark-mode')) {
+                nav.style.boxShadow = '0 2px 30px rgba(0, 255, 136, 0.2)';
+            } else {
+                nav.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            }
         } else {
             nav.style.boxShadow = '0 2px 20px var(--shadow-light)';
         }
-    });
-
-    const fadeInElements = document.querySelectorAll('section, .project, .achievement-card, .stat-card, .contact-item');
-    const fadeInObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    fadeInElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-        fadeInObserver.observe(el);
     });
 
     const projectCards = document.querySelectorAll('.project');
@@ -193,25 +135,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    });
-
-    const interactiveElements = document.querySelectorAll('.social-btn, .project-button, .interest-tags span, .stat-card, .achievement-card');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', function() {
-            this.style.transform = this.style.transform || '';
-            const currentTransform = this.style.transform;
-            this.style.transform = currentTransform + ' scale(1.05)';
-        });
-        el.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
-    });
-
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        if (header) {
-            header.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
     });
 });
