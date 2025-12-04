@@ -45,7 +45,7 @@
             <div class="shape shape-5"></div>
             <div class="shape shape-6"></div>
         </div>
-        <video autoplay muted loop playsinline class="header-video">
+        <video autoplay muted loop playsinline class="header-video" preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%230a0e27' width='1920' height='1080'/%3E%3C/svg%3E">
             <source src="background.mp4" type="video/mp4">
         </video>
 
@@ -59,9 +59,11 @@
                     <img src="profile.jpg" alt="Euwan Gabriel Abogadie" class="profile-img" onerror="this.src='https://via.placeholder.com/180/4CAF50/ffffff?text=EGA'">
                 </div>
             </div>
-            <h1>Euwan Gabriel B. Abogadie</h1>
-            <p class="subtitle">Software Developer & Tech Enthusiast</p>
-            <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
+            <div class="header-text">
+                <h1>Euwan Gabriel B. Abogadie</h1>
+                <p class="subtitle">Software Developer & Tech Enthusiast</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
+            </div>
 
             <div class="social-links">
                 <a href="https://github.com/euwan123" target="_blank" aria-label="GitHub" class="social-btn">
@@ -78,47 +80,45 @@
         <div class="section-header">
             <h2><i class="fas fa-user-circle"></i> About Me</h2>
         </div>
-        <div class="about-container">
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
-                        Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
-                        software can make life easier, which is why I got into programming in the first place.
-                    </p>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
+                    Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
+                    software can make life easier, which is why I got into programming in the first place.
+                </p>
 
-                    <p>
-                        What really excites me is creating applications that not only work well but also 
-                        look good and feel intuitive to use. Most of my work revolves around 
-                        <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
-                        Windows Forms applications with polished GUIs. I also work extensively with 
-                        <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
-                        real problems.
-                    </p>
+                <p>
+                    What really excites me is creating applications that not only work well but also 
+                    look good and feel intuitive to use. Most of my work revolves around 
+                    <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
+                    Windows Forms applications with polished GUIs. I also work extensively with 
+                    <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
+                    real problems.
+                </p>
 
-                    <p>
-                        I'm the kind of person who gets genuinely excited about making buttons look just 
-                        right and tweaking layouts until everything feels natural. Whether it's a school project 
-                        or something I'm working on in my free time, I always try to balance functionality with 
-                        thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
-                    </p>
+                <p>
+                    I'm the kind of person who gets genuinely excited about making buttons look just 
+                    right and tweaking layouts until everything feels natural. Whether it's a school project 
+                    or something I'm working on in my free time, I always try to balance functionality with 
+                    thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>3+</h3>
+                    <p>Projects Completed</p>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <i class="fas fa-project-diagram"></i>
-                        <h3>10+</h3>
-                        <p>Projects Completed</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-code"></i>
-                        <h3>7+</h3>
-                        <p>Technologies</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-award"></i>
-                        <h3>5+</h3>
-                        <p>Achievements</p>
-                    </div>
+                <div class="stat-card">
+                    <i class="fas fa-code"></i>
+                    <h3>7+</h3>
+                    <p>Technologies</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-award"></i>
+                    <h3>5+</h3>
+                    <p>Achievements</p>
                 </div>
             </div>
         </div>
@@ -363,47 +363,94 @@
             I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!
         </p>
 
-        <div class="contact-info">
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
+        <div class="contact-grid">
+            <div class="contact-main-card">
+                <div class="contact-card-header">
+                    <div class="pulse-dot"></div>
+                    <h3>Let's Connect!</h3>
                 </div>
-                <strong>Email</strong> 
-                <a href="mailto:egAbogadie@mcm.edu.ph">egAbogadie@mcm.edu.ph</a>
+                <p class="contact-description">
+                    Whether you have a project in mind, want to collaborate, or just want to say hi, 
+                    I'd love to hear from you. Drop me a message through any of these channels!
+                </p>
+                <div class="quick-links">
+                    <a href="mailto:egAbogadie@mcm.edu.ph" class="quick-link-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://github.com/euwan123" target="_blank" class="quick-link-btn">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank" class="quick-link-btn">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
 
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-mobile-alt"></i>
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>Email</strong> 
+                        <a href="mailto:egAbogadie@mcm.edu.ph">egAbogadie@mcm.edu.ph</a>
+                    </div>
                 </div>
-                <strong>GCash Donation</strong> 
-                <a href="tel:+639937623375">+63 993 762 3375</a>
-            </div>
 
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>GCash Donation</strong> 
+                        <a href="tel:+639937623375">+63 993 762 3375</a>
+                    </div>
                 </div>
-                <strong>Location</strong> 
-                <span>Matina Aplaya, Davao City, Philippines</span>
-            </div>
 
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fab fa-github"></i>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>Location</strong> 
+                        <span>Matina Aplaya, Davao City, Philippines</span>
+                    </div>
                 </div>
-                <strong>GitHub</strong> 
-                <a href="https://github.com/euwan123" target="_blank">github.com/euwan123</a>
-            </div>
 
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fab fa-linkedin"></i>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>GitHub</strong> 
+                        <a href="https://github.com/euwan123" target="_blank">github.com/euwan123</a>
+                    </div>
                 </div>
-                <strong>LinkedIn</strong> 
-                <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank">
-                    linkedin.com/in/euwan-abogadie
-                </a>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>LinkedIn</strong> 
+                        <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank">
+                            linkedin.com/in/euwan-abogadie
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-item response-time">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>Response Time</strong> 
+                        <span>Usually within 24-48 hours</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
