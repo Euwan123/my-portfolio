@@ -10,9 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+<body class="dark-mode">
 
     <nav>
         <div class="nav-container">
@@ -39,7 +37,14 @@
     </button>
 
     <header>
-        <div class="particles" id="particles"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
         <video autoplay muted loop playsinline class="header-video">
             <source src="background.mp4" type="video/mp4">
         </video>
@@ -54,8 +59,8 @@
                     <img src="profile.jpg" alt="Euwan Gabriel Abogadie" class="profile-img" onerror="this.src='https://via.placeholder.com/180/4CAF50/ffffff?text=EGA'">
                 </div>
             </div>
-            <h1 class="glitch" data-text="Euwan Gabriel B. Abogadie">Euwan Gabriel B. Abogadie</h1>
-            <p class="subtitle typing-effect">Software Developer & Tech Enthusiast</p>
+            <h1>Euwan Gabriel B. Abogadie</h1>
+            <p class="subtitle">Software Developer & Tech Enthusiast</p>
             <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
 
             <div class="social-links">
@@ -73,45 +78,47 @@
         <div class="section-header">
             <h2><i class="fas fa-user-circle"></i> About Me</h2>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>
-                    Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
-                    Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
-                    software can make life easier, which is why I got into programming in the first place.
-                </p>
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
+                        Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
+                        software can make life easier, which is why I got into programming in the first place.
+                    </p>
 
-                <p>
-                    What really excites me is creating applications that not only work well but also 
-                    look good and feel intuitive to use. Most of my work revolves around 
-                    <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
-                    Windows Forms applications with polished GUIs. I also work extensively with 
-                    <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
-                    real problems.
-                </p>
+                    <p>
+                        What really excites me is creating applications that not only work well but also 
+                        look good and feel intuitive to use. Most of my work revolves around 
+                        <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
+                        Windows Forms applications with polished GUIs. I also work extensively with 
+                        <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
+                        real problems.
+                    </p>
 
-                <p>
-                    I'm the kind of person who gets genuinely excited about making buttons look just 
-                    right and tweaking layouts until everything feels natural. Whether it's a school project 
-                    or something I'm working on in my free time, I always try to balance functionality with 
-                    thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
-                </p>
-            </div>
-            <div class="about-stats">
-                <div class="stat-card">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3>10+</h3>
-                    <p>Projects Completed</p>
+                    <p>
+                        I'm the kind of person who gets genuinely excited about making buttons look just 
+                        right and tweaking layouts until everything feels natural. Whether it's a school project 
+                        or something I'm working on in my free time, I always try to balance functionality with 
+                        thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
+                    </p>
                 </div>
-                <div class="stat-card">
-                    <i class="fas fa-code"></i>
-                    <h3>7+</h3>
-                    <p>Technologies</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-award"></i>
-                    <h3>5+</h3>
-                    <p>Achievements</p>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>10+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-code"></i>
+                        <h3>7+</h3>
+                        <p>Technologies</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-award"></i>
+                        <h3>5+</h3>
+                        <p>Achievements</p>
+                    </div>
                 </div>
             </div>
         </div>
