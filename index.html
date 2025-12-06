@@ -60,9 +60,10 @@
                 </div>
             </div>
             <div class="header-text">
-                <h1>Euwan Gabriel B. Abogadie</h1>
+                <h1 class="animated-name">Euwan Gabriel B. Abogadie</h1>
                 <p class="subtitle">Software Developer & Tech Enthusiast</p>
                 <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
+                <button class="game-mode-btn" onclick="openGameModePrompt()">Game Mode</button>
             </div>
 
             <div class="social-links">
@@ -79,6 +80,11 @@
     <section id="about">
         <div class="section-header">
             <h2><i class="fas fa-user-circle"></i> About Me</h2>
+        </div>
+        <div class="video-container second-video">
+            <video autoplay muted loop playsinline class="about-video" preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%230a0e27' width='1920' height='1080'/%3E%3C/svg%3E">
+                <source src="THIS IS 4K ANIME YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="about-content">
             <div class="about-text">
@@ -183,70 +189,40 @@
                     <div style="width: 40%"></div>
                 </div>
             </div>
-            <div class="skill">
-                <div class="skill-header">
-                    <span><i class="fab fa-git-alt"></i> Git & GitHub</span>
-                    <span>65%</span>
-                </div>
-                <div class="skill-bar">
-                    <div style="width: 65%"></div>
-                </div>
-            </div>
         </div>
 
-        <div class="interests">
-            <h3><i class="fas fa-heart"></i> Expertise & Interests</h3>
-            <div class="interest-tags">
-                <span><i class="fas fa-paint-brush"></i> GUI Design</span>
-                <span><i class="fas fa-code"></i> C# Development</span>
-                <span><i class="fab fa-java"></i> Java Applications</span>
-                <span><i class="fas fa-window-maximize"></i> Visual Studio 2022</span>
-                <span><i class="fas fa-lightbulb"></i> IntelliJ IDEA</span>
-                <span><i class="fas fa-gamepad"></i> Gaming</span>
-                <span><i class="fas fa-blog"></i> Tech Blogs</span>
-            </div>
+        <div class="section-header interests-header">
+            <h2><i class="fas fa-brain"></i> Interests & Tools</h2>
+        </div>
+        <div class="interest-tags">
+            <span><i class="fas fa-gamepad"></i> Game Development</span>
+            <span><i class="fas fa-robot"></i> AI/ML Fundamentals</span>
+            <span><i class="fab fa-python"></i> Python</span>
+            <span><i class="fas fa-database"></i> SQL Server</span>
+            <span><i class="fas fa-code-branch"></i> Git / GitHub</span>
+            <span><i class="fab fa-android"></i> Android Development</span>
         </div>
     </section>
 
     <section id="projects">
         <div class="section-header">
-            <h2><i class="fas fa-rocket"></i> My Projects</h2>
+            <h2><i class="fas fa-cogs"></i> Projects</h2>
         </div>
         <div class="projects-container">
             <div class="project">
                 <div class="project-glow"></div>
                 <div class="project-content">
                     <div class="project-icon">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
                     <div class="project-header">
-                        <h3>StrokeSense - Baybayin Interactive Learning</h3>
-                        <span class="project-date"><i class="far fa-calendar"></i> December 2025</span>
+                        <h3>System PlanIT: Event Management System</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> May 2025</span>
                     </div>
                     <p>
-                        StrokeSense brings the beauty of the ancient Baybayin script to life with interactive AI technology,
-                        making learning engaging, personalized, and fun.
-                    </p>
-                    <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
-                    <a href="https://euwan123.github.io/strokesense-landing-page/" target="_blank" class="project-button">
-                        <i class="fas fa-external-link-alt"></i> View Live Website
-                    </a>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-glow"></div>
-                <div class="project-content">
-                    <div class="project-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div class="project-header">
-                        <h3>PlanIT - Event Management System</h3>
-                        <span class="project-date"><i class="far fa-calendar"></i> September 2025</span>
-                    </div>
-                    <p>
-                        A comprehensive event management system developed with Group 7. Features event planning, scheduling,
-                        and coordination tools with a modern GUI interface.
+                        A comprehensive event management system designed to streamline the planning, 
+                        execution, and tracking of various events for Mapua MCM. Features event planning, 
+                        scheduling, and coordination tools with a modern GUI interface.
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> C#, Windows Forms, Visual Studio 2022</p>
                     <a href="https://github.com/Euwan123/Group-7-System-PlanIT" target="_blank" class="project-button">
@@ -254,7 +230,6 @@
                     </a>
                 </div>
             </div>
-
             <div class="project">
                 <div class="project-glow"></div>
                 <div class="project-content">
@@ -266,7 +241,7 @@
                         <span class="project-date"><i class="far fa-calendar"></i> November 2025</span>
                     </div>
                     <p>
-                        My personal portfolio website showcasing my skills, projects, and experience. 
+                        My personal portfolio website showcasing my skills, projects, and experience.
                         Features a responsive design with dark mode support and smooth animations.
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
@@ -291,64 +266,36 @@
                         <div class="achievement-icon">
                             <i class="fas fa-trophy"></i>
                         </div>
-                        <h3>Best in Problem Solving & Best Q&A</h3>
-                        <p>Won Best in Problem Solving and Best in Q&A in a coding project competition, demonstrating exceptional analytical and communication skills.</p>
+                        <h3>Best in Problem Solving Award</h3>
+                        <p>Awarded for outstanding performance in the advanced programming course problem-solving challenge.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-year">2025</div>
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <h3>MMCM Cup Champion</h3>
-                        <p>Champion of MMCM Cup Mobile Legends Tournament. Demonstrated strategic thinking, teamwork, and leadership under pressure.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-year">2025</div>
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-basketball-ball"></i>
-                        </div>
-                        <h3>BounceBack Basketball Simulator</h3>
-                        <p>Developed a basketball game simulator solo, winning Best Project, Problem Solving, and Best Q&A awards. Showcased game development and physics simulation skills.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-year">2025</div>
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3>C++ Programming Certificate</h3>
-                        <p>Earned C++ Programming Certificate with an outstanding score of 1371/1380 points, demonstrating mastery of advanced programming concepts.</p>
-                    </div>
-                </div>
-            </div>
-
+            <div class="timeline-line"></div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-year">2024</div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
-                            <i class="fas fa-code"></i>
+                            <i class="fas fa-certificate"></i>
                         </div>
-                        <h3>C++ Crafting Code Participation</h3>
-                        <p>Certificate of Participation in C++ Crafting Code workshop, expanding knowledge in advanced C++ programming techniques and best practices.</p>
+                        <h3>Web Development Workshop Certificate</h3>
+                        <p>Completed a comprehensive full-stack web development workshop, focusing on modern frameworks and best practices.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Dean's Lister</h3>
+                        <p>Recognized for academic excellence, maintaining a high GPA throughout the academic year.</p>
                     </div>
                 </div>
             </div>
@@ -357,38 +304,27 @@
 
     <section id="contact">
         <div class="section-header">
-            <h2><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+            <h2><i class="fas fa-paper-plane"></i> Contact Me</h2>
         </div>
-        <p class="contact-intro">
-            I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!
-        </p>
-
         <div class="contact-grid">
             <div class="contact-main-card">
                 <div class="contact-card-header">
                     <div class="pulse-dot"></div>
                     <h3>Let's Connect!</h3>
                 </div>
-                <p class="contact-description">
-                    Whether you have a project in mind, want to collaborate, or just want to say hi, 
-                    I'd love to hear from you. Drop me a message through any of these channels!
-                </p>
+                <p class="contact-description">Whether you have a project in mind, want to collaborate, or just want to say hi, I'd love to hear from you. Drop me a message through any of these channels!</p>
                 <div class="quick-links">
                     <a href="mailto:egAbogadie@mcm.edu.ph" class="quick-link-btn">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email Me</span>
+                        <i class="fas fa-envelope"></i> <span>Email Me</span>
                     </a>
                     <a href="https://github.com/euwan123" target="_blank" class="quick-link-btn">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
+                        <i class="fab fa-github"></i> <span>My GitHub</span>
                     </a>
                     <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank" class="quick-link-btn">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
+                        <i class="fab fa-linkedin"></i> <span>Connect on LinkedIn</span>
                     </a>
                 </div>
             </div>
-
             <div class="contact-info-grid">
                 <div class="contact-item">
                     <div class="contact-icon">
@@ -397,26 +333,6 @@
                     <div class="contact-details">
                         <strong>Email</strong> 
                         <a href="mailto:egAbogadie@mcm.edu.ph">egAbogadie@mcm.edu.ph</a>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <strong>GCash Donation</strong> 
-                        <a href="tel:+639937623375">+63 993 762 3375</a>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <strong>Location</strong> 
-                        <span>Matina Aplaya, Davao City, Philippines</span>
                     </div>
                 </div>
 
@@ -461,6 +377,33 @@
             <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
         </div>
     </footer>
+    
+    <div id="game-mode-overlay" class="game-mode-overlay">
+        <div class="game-mode-prompt" id="game-mode-prompt">
+            <h3>WARNING: Initiating Game Mode</h3>
+            <p>This will change the entire visual experience and is optimized for advanced users. Proceed?</p>
+            <div class="prompt-buttons">
+                <button onclick="startGameMode()" class="yes-btn">Yes, Proceed</button>
+                <button onclick="closeGameModePrompt()" class="no-btn">No, Back to Normal</button>
+            </div>
+        </div>
+        <div class="game-mode-screen" id="game-mode-screen">
+            <video muted loop playsinline class="game-mode-video" preload="auto">
+                <source src="Futuristic HUD UI Visuals Sound Design.mp4" type="video/mp4">
+            </video>
+            <div class="game-mode-gui">
+                <div class="gui-stats">
+                    <h2>SYSTEM STATS</h2>
+                    <p>Status: ONLINE</p>
+                    <p>Mode: GAME MODE / DEVELOPMENT CLASS</p>
+                    <p>Access Level: EUWAN_GABRIEL_B_ABOGADIE</p>
+                    <button onclick="exitGameMode()" class="exit-btn">Exit Game Mode</button>
+                </div>
+                <div class="gui-details">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
