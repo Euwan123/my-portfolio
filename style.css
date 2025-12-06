@@ -493,6 +493,8 @@ header h1 {
     gap: 0.8rem;
     position: relative;
     overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .game-mode-btn::before {
@@ -622,26 +624,27 @@ h3 {
     font-weight: 600;
 }
 
-#about {
+.about-video-section {
+    width: 100%;
+    height: 70vh;
     position: relative;
     overflow: hidden;
-    padding: 5rem 2rem;
+    background: #000;
 }
 
-.about-video {
-    position: absolute;
-    top: 0;
-    left: 0;
+.about-video-standalone {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 0;
-    filter: brightness(30%);
+    filter: brightness(40%);
+}
+
+#about {
+    position: relative;
+    padding: 5rem 2rem;
 }
 
 .about-content {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 3rem;
@@ -649,15 +652,41 @@ h3 {
 }
 
 .about-text-wrapper {
-    background: rgba(30, 40, 60, 0.85);
+    background: rgba(198, 40, 40, 0.15);
     border-radius: var(--border-radius);
     padding: 2.5rem;
     backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 60px rgba(198, 40, 40, 0.4), 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(239, 83, 80, 0.1);
+    border: 2px solid rgba(198, 40, 40, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-text-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(239, 83, 80, 0.1) 0%, transparent 70%);
+    animation: rotateGlow 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 body.dark-mode .about-text-wrapper {
-    background: rgba(20, 25, 40, 0.9);
+    background: rgba(198, 40, 40, 0.2);
+    box-shadow: 0 0 80px rgba(198, 40, 40, 0.5), 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(239, 83, 80, 0.15);
+    border-color: rgba(239, 83, 80, 0.4);
 }
 
 .about-text p {
@@ -1463,6 +1492,42 @@ body.dark-mode .quick-link-btn:hover {
     animation: videoFadeIn 1s ease;
 }
 
+.skip-video-btn,
+.back-video-btn {
+    position: absolute;
+    z-index: 20001;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--primary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.skip-video-btn {
+    top: 20px;
+    right: 20px;
+}
+
+.back-video-btn {
+    top: 20px;
+    left: 20px;
+}
+
+.skip-video-btn:hover,
+.back-video-btn:hover {
+    background: rgba(198, 40, 40, 0.9);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--shadow-glow);
+}
+
 @keyframes videoFadeIn {
     from {
         opacity: 0;
@@ -1472,89 +1537,6 @@ body.dark-mode .quick-link-btn:hover {
     }
 }
 
-.game-mode-gui {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #1a0a0a 0%, #2a1515 100%);
-    z-index: 20001;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.5s ease;
-}
-
-.game-mode-gui.active {
-    display: flex;
-}
-
-.game-mode-content {
-    text-align: center;
-    color: white;
-}
-
-.game-mode-content h1 {
-    font-size: 4rem;
-    margin-bottom: 3rem;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: nameShine 3s linear infinite;
-    text-shadow: 0 0 30px var(--shadow-glow);
-}
-
-.game-stats {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-}
-
-.game-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 2rem;
-    background: rgba(239, 83, 80, 0.1);
-    border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius);
-    min-width: 150px;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: var(--accent-color);
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.stat-value {
-    font-size: 2rem;
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-.exit-game-btn {
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 8px 30px var(--shadow-glow);
-}
-
-.exit-game-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 40px var(--shadow-glow);
-}
 
 footer {
     text-align: center;
@@ -1618,12 +1600,8 @@ body.dark-mode footer {
         grid-template-columns: 1fr;
     }
 
-    .game-stats {
-        gap: 1.5rem;
-    }
-
-    .game-mode-content h1 {
-        font-size: 2.5rem;
+    .about-video-section {
+        height: 50vh;
     }
 }
 
@@ -1690,6 +1668,10 @@ body.dark-mode footer {
         padding: 1.5rem;
     }
 
+    .about-video-section {
+        height: 40vh;
+    }
+
     .project-content {
         padding: 1.5rem;
     }
@@ -1706,18 +1688,16 @@ body.dark-mode footer {
         font-size: 1.5rem;
     }
 
-    .game-mode-content h1 {
-        font-size: 2rem;
-    }
-
-    .game-stats {
-        flex-direction: column;
-        align-items: center;
-    }
-
     .warning-content {
         padding: 2rem;
         margin: 1rem;
+    }
+
+    .skip-video-btn,
+    .back-video-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
 
@@ -1771,16 +1751,25 @@ body.dark-mode footer {
         align-items: flex-start;
     }
 
-    .game-mode-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .game-stat {
-        min-width: 120px;
-        padding: 1.5rem;
+    .about-video-section {
+        height: 35vh;
     }
 
     .warning-content {
         padding: 1.5rem;
+    }
+
+    .skip-video-btn,
+    .back-video-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        top: 10px;
+        right: 10px;
+    }
+
+    .back-video-btn {
+        top: 10px;
+        left: 10px;
     }
 }
