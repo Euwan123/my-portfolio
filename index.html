@@ -60,9 +60,12 @@
                 </div>
             </div>
             <div class="header-text">
-                <h1>Euwan Gabriel B. Abogadie</h1>
+                <h1 class="animated-name">Euwan Gabriel B. Abogadie</h1>
                 <p class="subtitle">Software Developer & Tech Enthusiast</p>
                 <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
+                <button class="game-mode-btn" onclick="showGameModeWarning()">
+                    <i class="fas fa-gamepad"></i> Game Mode
+                </button>
             </div>
 
             <div class="social-links">
@@ -80,8 +83,12 @@
         <div class="section-header">
             <h2><i class="fas fa-user-circle"></i> About Me</h2>
         </div>
+        <video autoplay muted loop playsinline class="about-video" preload="auto">
+            <source src="THIS IS 4K ANIME YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
+        </video>
         <div class="about-content">
-            <div class="about-text">
+            <div class="about-text-wrapper">
+                <div class="about-text">
                 <p>
                     Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
                     Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
@@ -103,6 +110,7 @@
                     or something I'm working on in my free time, I always try to balance functionality with 
                     thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
                 </p>
+                </div>
             </div>
             <div class="about-stats">
                 <div class="stat-card">
@@ -442,18 +450,48 @@
                     </div>
                 </div>
 
-                <div class="contact-item response-time">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-details">
-                        <strong>Response Time</strong> 
-                        <span>Usually within 24-48 hours</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
+    <div id="gameModeWarning" class="warning-modal">
+        <div class="warning-content">
+            <div class="lightning-effect"></div>
+            <h2><i class="fas fa-exclamation-triangle"></i> Warning</h2>
+            <p>Are you sure you want to enter Game Mode?</p>
+            <div class="warning-buttons">
+                <button class="warning-btn yes-btn" onclick="playGameModeVideo()">Yes</button>
+                <button class="warning-btn no-btn" onclick="closeGameModeWarning()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameModeVideo" class="game-mode-video-container">
+        <video id="gameModeVideoPlayer" autoplay muted playsinline class="game-mode-video">
+            <source src="Futuristic HUD UI Visuals Sound Design.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="gameModeGUI" class="game-mode-gui">
+        <div class="game-mode-content">
+            <h1>GAME MODE</h1>
+            <div class="game-stats">
+                <div class="game-stat">
+                    <span class="stat-label">LEVEL</span>
+                    <span class="stat-value">∞</span>
+                </div>
+                <div class="game-stat">
+                    <span class="stat-label">POWER</span>
+                    <span class="stat-value">MAX</span>
+                </div>
+                <div class="game-stat">
+                    <span class="stat-label">STATUS</span>
+                    <span class="stat-value">ACTIVE</span>
+                </div>
+            </div>
+            <button class="exit-game-btn" onclick="exitGameMode()">Exit Game Mode</button>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
