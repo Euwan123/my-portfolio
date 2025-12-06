@@ -9,6 +9,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     opacity: 0;
+    padding-right: 0;
 }
 
 .game-mode-gui.active {
@@ -17,18 +18,20 @@
 }
 
 .game-mode-gui::-webkit-scrollbar {
-    width: 14px;
+    width: 12px;
 }
 
 .game-mode-gui::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.4);
-    border-radius: 7px;
+    border-radius: 6px;
+    margin: 20px 10px;
 }
 
 .game-mode-gui::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #c62828, #ef5350);
-    border-radius: 7px;
+    border-radius: 6px;
     border: 2px solid rgba(0, 0, 0, 0.2);
+    margin: 0 5px;
 }
 
 .game-mode-gui::-webkit-scrollbar-thumb:hover {
@@ -51,7 +54,7 @@
     position: relative;
     z-index: 1;
     padding: 3rem 2rem;
-    padding-right: 4rem;
+    padding-right: 2rem;
     max-width: 1400px;
     margin: 0 auto;
     color: white;
@@ -285,7 +288,8 @@
     grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
     margin: 0;
-    justify-items: start;
+    justify-items: stretch;
+    align-items: stretch;
 }
 
 .anime-card {
@@ -299,6 +303,11 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .anime-card::before {
@@ -358,8 +367,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .feature-card {
@@ -464,8 +472,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
-    max-width: 1000px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .achievement-item {
