@@ -15,6 +15,50 @@ function scrollToTop() {
     });
 }
 
+function showGameModeWarning() {
+    const modal = document.getElementById('gameModeWarning');
+    modal.classList.add('active');
+    const lightning = modal.querySelector('.lightning-effect');
+    lightning.style.animation = 'none';
+    setTimeout(() => {
+        lightning.style.animation = 'lightning 0.5s ease-in-out';
+    }, 10);
+}
+
+function closeGameModeWarning() {
+    const modal = document.getElementById('gameModeWarning');
+    modal.classList.remove('active');
+}
+
+function playGameModeVideo() {
+    closeGameModeWarning();
+    const videoContainer = document.getElementById('gameModeVideo');
+    const video = document.getElementById('gameModeVideoPlayer');
+    
+    videoContainer.classList.add('active');
+    video.currentTime = 0;
+    video.play();
+    
+    const stopVideo = function() {
+        video.pause();
+        videoContainer.classList.remove('active');
+        const gameGUI = document.getElementById('gameModeGUI');
+        gameGUI.classList.add('active');
+    };
+    
+    setTimeout(stopVideo, 17000);
+    
+    video.addEventListener('ended', stopVideo, { once: true });
+}
+
+function exitGameMode() {
+    const gameGUI = document.getElementById('gameModeGUI');
+    gameGUI.classList.remove('active');
+    const video = document.getElementById('gameModeVideoPlayer');
+    video.pause();
+    video.currentTime = 0;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     try {
         const savedTheme = localStorage.getItem('darkMode');
@@ -99,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nav = document.querySelector('nav');
         if (window.scrollY > 50) {
             if (document.body.classList.contains('dark-mode')) {
-                nav.style.boxShadow = '0 2px 30px rgba(0, 255, 136, 0.2)';
+                nav.style.boxShadow = '0 2px 30px rgba(239, 83, 80, 0.2)';
             } else {
                 nav.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
             }
@@ -135,5 +179,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    });
+
+    document.getElementById('gameModeWarning').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeGameModeWarning();
+        }
     });
 });
