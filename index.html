@@ -60,10 +60,10 @@
                 </div>
             </div>
             <div class="header-text">
-                <h1 class="animated-name">Euwan Gabriel B. Abogadie</h1>
+                <h1 class="animated-name glitch" data-text="Euwan Gabriel B. Abogadie">Euwan Gabriel B. Abogadie</h1>
                 <p class="subtitle">Software Developer & Tech Enthusiast</p>
                 <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
-                <button class="game-mode-btn" onclick="openGameModePrompt()">Game Mode</button>
+                <button class="game-mode-btn glitch-btn" onclick="openGameModePrompt()" data-text="Game Mode">Game Mode</button>
             </div>
 
             <div class="social-links">
@@ -81,50 +81,53 @@
         <div class="section-header">
             <h2><i class="fas fa-user-circle"></i> About Me</h2>
         </div>
-        <div class="video-container second-video">
-            <video autoplay muted loop playsinline class="about-video" preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%230a0e27' width='1920' height='1080'/%3E%3C/svg%3E">
-                <source src="THIS IS 4K ANIME YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>
-                    Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
-                    Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
-                    software can make life easier, which is why I got into programming in the first place.
-                </p>
-
-                <p>
-                    What really excites me is creating applications that not only work well but also 
-                    look good and feel intuitive to use. Most of my work revolves around 
-                    <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
-                    Windows Forms applications with polished GUIs. I also work extensively with 
-                    <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
-                    real problems.
-                </p>
-
-                <p>
-                    I'm the kind of person who gets genuinely excited about making buttons look just 
-                    right and tweaking layouts until everything feels natural. Whether it's a school project 
-                    or something I'm working on in my free time, I always try to balance functionality with 
-                    thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
-                </p>
+        
+        <div class="about-section-wrapper">
+            <div class="video-container second-video">
+                <video autoplay muted loop playsinline class="about-video" preload="auto">
+                    <source src="THIS IS 4K ANIME YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
+                </video>
             </div>
-            <div class="about-stats">
-                <div class="stat-card">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3>3+</h3>
-                    <p>Projects Completed</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
+                        Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
+                        software can make life easier, which is why I got into programming in the first place.
+                    </p>
+
+                    <p>
+                        What really excites me is creating applications that not only work well but also 
+                        look good and feel intuitive to use. Most of my work revolves around 
+                        <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
+                        Windows Forms applications with polished GUIs. I also work extensively with 
+                        <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
+                        real problems.
+                    </p>
+
+                    <p>
+                        I'm the kind of person who gets genuinely excited about making buttons look just 
+                        right and tweaking layouts until everything feels natural. Whether it's a school project 
+                        or something I'm working on in my free time, I always try to balance functionality with 
+                        thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
+                    </p>
                 </div>
-                <div class="stat-card">
-                    <i class="fas fa-code"></i>
-                    <h3>7+</h3>
-                    <p>Technologies</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-award"></i>
-                    <h3>5+</h3>
-                    <p>Achievements</p>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>3+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-code"></i>
+                        <h3>7+</h3>
+                        <p>Technologies</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-award"></i>
+                        <h3>5+</h3>
+                        <p>Achievements</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -234,6 +237,26 @@
                 <div class="project-glow"></div>
                 <div class="project-content">
                     <div class="project-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <div class="project-header">
+                        <h3>Baybayin StrokeSense</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> January 2026</span>
+                    </div>
+                    <p>
+                        An interactive educational application for learning Baybayin, the ancient Philippine script.
+                        Features stroke-order recognition and a guided writing environment using C#.
+                    </p>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> C#, Windows Forms, Visual Studio, Machine Learning Basics</p>
+                    <a href="#" target="_blank" class="project-button">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-glow"></div>
+                <div class="project-content">
+                    <div class="project-icon">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="project-header">
@@ -258,6 +281,20 @@
             <h2><i class="fas fa-medal"></i> Achievements</h2>
         </div>
         <div class="timeline">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2026</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Innovative Software Design Award</h3>
+                        <p>Awarded for the creative and efficient architecture of the Baybayin StrokeSense application.</p>
+                    </div>
+                </div>
+            </div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -271,31 +308,16 @@
                     </div>
                 </div>
             </div>
-            <div class="timeline-line"></div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-year">2024</div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3>Web Development Workshop Certificate</h3>
-                        <p>Completed a comprehensive full-stack web development workshop, focusing on modern frameworks and best practices.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-line"></div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-year">2023</div>
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
                             <i class="fas fa-star"></i>
                         </div>
-                        <h3>Dean's Lister</h3>
-                        <p>Recognized for academic excellence, maintaining a high GPA throughout the academic year.</p>
+                        <h3>Dean's Lister - First Semester</h3>
+                        <p>Recognized for achieving Dean's List status during the first semester of the academic year.</p>
                     </div>
                 </div>
             </div>
@@ -358,13 +380,13 @@
                     </div>
                 </div>
 
-                <div class="contact-item response-time">
+                <div class="contact-item">
                     <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="contact-details">
-                        <strong>Response Time</strong> 
-                        <span>Usually within 24-48 hours</span>
+                        <strong>Phone/Viber</strong> 
+                        <span>+63 9** *** **** (Upon Request)</span>
                     </div>
                 </div>
             </div>
@@ -380,27 +402,48 @@
     
     <div id="game-mode-overlay" class="game-mode-overlay">
         <div class="game-mode-prompt" id="game-mode-prompt">
-            <h3>WARNING: Initiating Game Mode</h3>
-            <p>This will change the entire visual experience and is optimized for advanced users. Proceed?</p>
+            <div class="prompt-header">
+                <i class="fas fa-exclamation-triangle warning-icon"></i>
+                <h3>SYSTEM ALERT: Initiating Game Mode</h3>
+                <div class="lightning-strike"></div>
+            </div>
+            <p>You are about to enter <strong>DEVELOPER MODE</strong>. This will activate a full-screen video interface. Proceed?</p>
             <div class="prompt-buttons">
-                <button onclick="startGameMode()" class="yes-btn">Yes, Proceed</button>
-                <button onclick="closeGameModePrompt()" class="no-btn">No, Back to Normal</button>
+                <button onclick="startGameMode()" class="yes-btn">YES / PROCEED</button>
+                <button onclick="closeGameModePrompt()" class="no-btn">NO / ABORT</button>
             </div>
         </div>
         <div class="game-mode-screen" id="game-mode-screen">
-            <video muted loop playsinline class="game-mode-video" preload="auto">
+            <video muted playsinline class="game-mode-video fade-in" preload="auto" data-video-duration="17">
                 <source src="Futuristic HUD UI Visuals Sound Design.mp4" type="video/mp4">
             </video>
-            <div class="game-mode-gui">
-                <div class="gui-stats">
-                    <h2>SYSTEM STATS</h2>
-                    <p>Status: ONLINE</p>
-                    <p>Mode: GAME MODE / DEVELOPMENT CLASS</p>
-                    <p>Access Level: EUWAN_GABRIEL_B_ABOGADIE</p>
-                    <button onclick="exitGameMode()" class="exit-btn">Exit Game Mode</button>
+            <div class="game-mode-gui developer-mode-gui" id="developer-mode-gui">
+                <header class="gui-header">
+                    <div class="gui-title">
+                        <i class="fas fa-terminal"></i> DEVELOPMENT CLASS INITIATED
+                    </div>
+                </header>
+                <div class="gui-content-grid">
+                    <div class="gui-card status-card">
+                        <h4>SYSTEM STATUS</h4>
+                        <span class="status-indicator online">ONLINE</span>
+                        <p>Process: Portfolio V2.1</p>
+                        <p>Mode: FULL ACCESS</p>
+                    </div>
+                    <div class="gui-card user-card">
+                        <h4>USER PROFILE</h4>
+                        <p>Name: Euwan Gabriel B. Abogadie</p>
+                        <p>Privileges: ROOT/ADMIN</p>
+                    </div>
+                    <div class="gui-card stats-card">
+                        <h4>KEY STATS</h4>
+                        <div class="stat-line"><span>C#</span> <span class="stat-value">70%</span></div>
+                        <div class="stat-line"><span>Java</span> <span class="stat-value">85%</span></div>
+                        <div class="stat-line"><span>HTML/CSS</span> <span class="stat-value">50%</span></div>
+                        <div class="stat-line"><span>Python</span> <span class="stat-value">40%</span></div>
+                    </div>
                 </div>
-                <div class="gui-details">
-                </div>
+                <button onclick="exitGameMode()" class="exit-btn glitch" data-text="EXIT MODE">EXIT MODE</button>
             </div>
         </div>
     </div>
