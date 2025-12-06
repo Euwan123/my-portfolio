@@ -51,13 +51,14 @@
     position: relative;
     z-index: 1;
     padding: 3rem 2rem;
+    padding-right: 4rem;
     max-width: 1400px;
     margin: 0 auto;
     color: white;
 }
 
 .game-mode-name {
-    text-align: center;
+    text-align: left;
     font-size: 3rem;
     margin-bottom: 1rem;
     background: linear-gradient(90deg, #fff, #ef5350, #fff);
@@ -70,7 +71,7 @@
 }
 
 .game-mode-title {
-    text-align: center;
+    text-align: left;
     font-size: 2.5rem;
     margin-bottom: 2rem;
     color: #ef5350;
@@ -78,17 +79,23 @@
     font-weight: 700;
 }
 
-.solo-stats {
+.stats-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: start;
+}
+
+.solo-stats,
+.secondary-stats {
     background: rgba(26, 10, 10, 0.8);
     border: 2px solid #c62828;
     border-radius: 20px;
     padding: 2rem;
-    margin-bottom: 3rem;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-    max-width: 500px;
-    margin-left: 0;
-    margin-right: auto;
+    width: 100%;
 }
 
 .stat-row {
@@ -265,7 +272,7 @@
 }
 
 .anime-section-title {
-    text-align: center;
+    text-align: left;
     font-size: 2rem;
     margin-bottom: 2rem;
     color: #ef5350;
@@ -275,10 +282,10 @@
 
 .anime-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    margin: 0;
+    justify-items: start;
 }
 
 .anime-card {
@@ -339,7 +346,7 @@
 }
 
 .features-title {
-    text-align: center;
+    text-align: left;
     font-size: 2rem;
     margin-bottom: 2rem;
     color: #ef5350;
@@ -445,7 +452,7 @@
 }
 
 .showcase-title {
-    text-align: center;
+    text-align: left;
     font-size: 2rem;
     margin-bottom: 2rem;
     color: #ef5350;
@@ -542,13 +549,17 @@
         font-size: 2rem;
     }
 
-    .solo-stats {
-        max-width: 500px;
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .solo-stats,
+    .secondary-stats {
         padding: 1.5rem;
     }
 
     .anime-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -565,9 +576,13 @@
         grid-template-columns: 1fr;
     }
 
-    .solo-stats {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .solo-stats,
+    .secondary-stats {
         padding: 1.2rem;
-        max-width: 100%;
     }
 
     .stat-row {
@@ -588,7 +603,10 @@
         font-size: 1.5rem;
     }
 
-    .anime-grid,
+    .anime-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .features-grid {
         grid-template-columns: 1fr;
     }
@@ -620,9 +638,13 @@
         min-width: 60px;
     }
 
-    .solo-stats {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .solo-stats,
+    .secondary-stats {
         padding: 1rem;
-        max-width: 100%;
     }
 
     .stat-row {
@@ -635,6 +657,10 @@
     .features-title,
     .showcase-title {
         font-size: 1.2rem;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .exit-game-btn {
