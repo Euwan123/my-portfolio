@@ -79,13 +79,16 @@
         </div>
     </header>
 
+    <div class="about-video-section">
+        <video autoplay muted loop playsinline class="about-video-standalone" preload="auto">
+            <source src="THIS IS 4K ANIME YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <section id="about">
         <div class="section-header">
             <h2><i class="fas fa-user-circle"></i> About Me</h2>
         </div>
-        <video autoplay muted loop playsinline class="about-video" preload="auto">
-            <source src="THIS IS 4K ANIME YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
-        </video>
         <div class="about-content">
             <div class="about-text-wrapper">
                 <div class="about-text">
@@ -467,6 +470,12 @@
     </div>
 
     <div id="gameModeVideo" class="game-mode-video-container">
+        <button class="skip-video-btn" onclick="skipGameModeVideo()" title="Skip Video">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="back-video-btn" onclick="backFromGameModeVideo()" title="Go Back">
+            <i class="fas fa-arrow-left"></i>
+        </button>
         <video id="gameModeVideoPlayer" autoplay muted playsinline class="game-mode-video">
             <source src="Futuristic HUD UI Visuals Sound Design.mp4" type="video/mp4">
         </video>
@@ -501,5 +510,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="game-mode.js"></script>
+    <link rel="stylesheet" href="game-mode.css">
 </body>
 </html>
