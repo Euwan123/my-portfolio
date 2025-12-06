@@ -42,11 +42,18 @@ function playGameModeVideo() {
     video.play();
     
     const showGUI = function() {
-        if (typeof showGameModeGUI === 'function') {
-            showGameModeGUI();
-        }
-        videoContainer.classList.remove('active');
-        video.pause();
+        videoContainer.style.opacity = '0';
+        videoContainer.style.transition = 'opacity 1.5s ease-in-out';
+        
+        setTimeout(() => {
+            if (typeof showGameModeGUI === 'function') {
+                showGameModeGUI();
+            }
+            videoContainer.classList.remove('active');
+            video.pause();
+            videoContainer.style.opacity = '';
+            videoContainer.style.transition = '';
+        }, 1500);
     };
     
     setTimeout(showGUI, 15000);
