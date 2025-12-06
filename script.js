@@ -34,37 +34,44 @@ function playGameModeVideo() {
     closeGameModeWarning();
     const videoContainer = document.getElementById('gameModeVideo');
     const video = document.getElementById('gameModeVideoPlayer');
+    const gameGUI = document.getElementById('gameModeGUI');
     
-    if (!videoContainer || !video) return;
+    if (!videoContainer || !video || !gameGUI) return;
     
     videoContainer.classList.add('active');
     video.currentTime = 0;
     video.play();
     
-    const showGUI = function() {
-        videoContainer.style.opacity = '0';
-        videoContainer.style.transition = 'opacity 1.5s ease-in-out';
+    let guiStarted = false;
+    
+    video.addEventListener('timeupdate', function() {
+        const currentTime = video.currentTime;
+        const videoDuration = video.duration || 16;
+        const fadeStartTime = videoDuration - 2;
         
-        setTimeout(() => {
-            if (typeof showGameModeGUI === 'function') {
-                showGameModeGUI();
-            }
+        if (currentTime >= fadeStartTime && !guiStarted) {
+            guiStarted = true;
+            gameGUI.style.display = 'block';
+            gameGUI.style.opacity = '0';
+            gameGUI.style.transition = 'opacity 2s ease-in-out';
+            
+            requestAnimationFrame(() => {
+                gameGUI.style.opacity = '1';
+            });
+        }
+        
+        if (currentTime >= videoDuration - 0.1) {
             videoContainer.classList.remove('active');
             video.pause();
-            videoContainer.style.opacity = '';
-            videoContainer.style.transition = '';
-        }, 1500);
-    };
-    
-    setTimeout(showGUI, 15000);
-    
-    video.addEventListener('ended', showGUI, { once: true });
-    video.addEventListener('timeupdate', function() {
-        if (video.currentTime >= 15) {
-            showGUI();
+            gameGUI.classList.add('active');
             video.removeEventListener('timeupdate', arguments.callee);
         }
-    });
+    }, { passive: true });
+    
+    video.addEventListener('ended', function() {
+        videoContainer.classList.remove('active');
+        gameGUI.classList.add('active');
+    }, { once: true });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
