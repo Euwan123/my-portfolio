@@ -802,13 +802,19 @@ section {
     z-index: 1;
 }
 
-section:nth-child(even) {
+section:nth-child(even):not(#about) {
     background-color: var(--bg-section-light);
+}
+
+#about {
+    background-color: transparent;
 }
 
 .section-header {
     text-align: center;
     margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
 }
 
 h2 {
@@ -1112,11 +1118,31 @@ body.dark-mode .skill-bar {
     box-shadow: 0 8px 25px var(--shadow-glow);
 }
 
+#projects {
+    position: relative;
+}
+
+#projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    background-color: var(--bg-section-light);
+    border-radius: var(--border-radius);
+    z-index: 0;
+}
+
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
     margin-top: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .project {
