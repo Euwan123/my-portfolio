@@ -35,6 +35,8 @@ function playGameModeVideo() {
     const videoContainer = document.getElementById('gameModeVideo');
     const video = document.getElementById('gameModeVideoPlayer');
     
+    if (!videoContainer || !video) return;
+    
     videoContainer.classList.add('active');
     video.currentTime = 0;
     video.play();
@@ -42,21 +44,14 @@ function playGameModeVideo() {
     const stopVideo = function() {
         video.pause();
         videoContainer.classList.remove('active');
-        const gameGUI = document.getElementById('gameModeGUI');
-        gameGUI.classList.add('active');
+        if (typeof showGameModeGUI === 'function') {
+            showGameModeGUI();
+        }
     };
     
-    setTimeout(stopVideo, 17000);
+    setTimeout(stopVideo, 16000);
     
     video.addEventListener('ended', stopVideo, { once: true });
-}
-
-function exitGameMode() {
-    const gameGUI = document.getElementById('gameModeGUI');
-    gameGUI.classList.remove('active');
-    const video = document.getElementById('gameModeVideoPlayer');
-    video.pause();
-    video.currentTime = 0;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
