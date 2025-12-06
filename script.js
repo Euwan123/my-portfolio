@@ -19,6 +19,11 @@ function openGameModePrompt() {
     const overlay = document.getElementById('game-mode-overlay');
     const prompt = document.getElementById('game-mode-prompt');
     const screen = document.getElementById('game-mode-screen');
+    const video = document.querySelector('.game-mode-video');
+    const gui = document.getElementById('developer-mode-gui');
+    
+    gui.classList.remove('gui-active');
+    video.classList.remove('fade-in-active');
     
     screen.style.display = 'none';
     prompt.style.display = 'block';
@@ -28,37 +33,65 @@ function openGameModePrompt() {
 
 function closeGameModePrompt() {
     const overlay = document.getElementById('game-mode-overlay');
+    const video = document.querySelector('.game-mode-video');
+    const gui = document.getElementById('developer-mode-gui');
+    
+    document.body.classList.remove('developer-mode');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
+
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+    gui.classList.remove('gui-active');
+    video.classList.remove('fade-in-active');
 }
 
 function startGameMode() {
     const prompt = document.getElementById('game-mode-prompt');
     const screen = document.getElementById('game-mode-screen');
     const video = document.querySelector('.game-mode-video');
+    const gui = document.getElementById('developer-mode-gui');
     
+    const videoDuration = parseFloat(video.getAttribute('data-video-duration')) || 17;
+
     prompt.style.display = 'none';
     screen.style.display = 'flex';
-    
     document.body.classList.add('developer-mode');
     
     if (video) {
+        video.classList.add('fade-in-active');
+        video.loop = false;
         video.currentTime = 0;
-        video.play();
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                setTimeout(() => {
+                    video.pause();
+                    video.currentTime = video.duration; 
+                    gui.classList.add('gui-active');
+                }, videoDuration * 1000);
+            })
+            .catch(error => {
+                console.error("Video playback prevented:", error);
+                // Fallback to show GUI immediately if video fails
+                gui.classList.add('gui-active');
+            });
+        } else {
+            // Fallback for immediate GUI display
+            setTimeout(() => {
+                video.pause();
+                gui.classList.add('gui-active');
+            }, videoDuration * 1000);
+        }
+    } else {
+        gui.classList.add('gui-active');
     }
 }
 
 function exitGameMode() {
-    const overlay = document.getElementById('game-mode-overlay');
-    const video = document.querySelector('.game-mode-video');
-    
-    document.body.classList.remove('developer-mode');
-    
-    if (video) {
-        video.pause();
-        video.currentTime = 0;
-    }
-    
     closeGameModePrompt();
 }
 
