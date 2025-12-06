@@ -12,44 +12,6 @@
 </head>
 <body class="dark-mode">
 
-    <div id="gamemode-video-overlay" class="gamemode-overlay">
-        <video id="gamemode-intro-video" src="Futuristic HUD UI Visuals Sound Design.mp4" muted preload="auto"></video>
-    </div>
-
-    <div id="gamemode-gui" class="gamemode-gui">
-        <div class="gui-header">
-            <h1 class="glitch" data-text="ACCESS_GRANTED">ACCESS_GRANTED</h1>
-            <button class="exit-gui" onclick="exitGameMode()"><i class="fas fa-times"></i> Exit System</button>
-        </div>
-        <div class="gui-content">
-            <div class="status-panel">
-                <h2>SYSTEM STATUS: ONLINE</h2>
-                <div class="status-bar">
-                    <div class="status-fill"></div>
-                </div>
-                <p>Euwan Gabriel B. Abogadie | Initiating Protocol 748-EGA</p>
-                <div class="data-stream">
-                    <span>> ANALYZING ... [OK]</span>
-                    <span>> LOADING ASSETS ... [COMPLETE]</span>
-                    <span>> CORE FUNCTIONALITY ... [ACTIVE]</span>
-                    <span>> INITIATING_GAME_MODE ... [SUCCESS]</span>
-                </div>
-            </div>
-            <div class="gui-monitor">
-                <p>Welcome to the System Command Line. Ready for input.</p>
-                <textarea readonly>C:\USER\EGA>_</textarea>
-            </div>
-        </div>
-    </div>
-
-    <div class="video-background-container">
-        <video autoplay muted loop id="main-video-bg" class="video-bg" preload="auto">
-            <source src="video-bg.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="video-overlay"></div>
-    </div>
-
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -61,345 +23,434 @@
                 <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
                 <li><a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li>
-                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                </li>
             </ul>
+            <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
+                <div class="toggle-track">
+                    <div class="toggle-thumb"></div>
+                </div>
+            </button>
         </div>
     </nav>
 
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <p class="subtitle">Hi, I'm</p>
-            <h1 class="animated-name">
-                <span data-char="E">E</span>
-                <span data-char="u">u</span>
-                <span data-char="w">w</span>
-                <span data-char="a">a</span>
-                <span data-char="n">n</span>
-                <span class="space">&nbsp;</span>
-                <span data-char="G">G</span>
-                <span data-char="a">a</span>
-                <span data-char="b">b</span>
-                <span data-char="r">r</span>
-                <span data-char="i">i</span>
-                <span data-char="e">e</span>
-                <span data-char="l">l</span>
-                <span class="space">&nbsp;</span>
-                <span data-char="B">B</span>
-                <span data-char=".">.</span>
-                <span class="space">&nbsp;</span>
-                <span data-char="A">A</span>
-                <span data-char="b">b</span>
-                <span data-char="o">o</span>
-                <span data-char="g">g</span>
-                <span data-char="a">a</span>
-                <span data-char="d">d</span>
-                <span data-char="i">i</span>
-                <span data-char="e">e</span>
-            </h1>
-            <p class="subtitle-two">A passionate Developer & Student</p>
-            <button id="game-mode-btn" class="game-mode-btn" onclick="showWarningModal()">
-                <i class="fas fa-gamepad"></i> Game Mode
-            </button>
-        </div>
-    </section>
+    <button class="scroll-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <div id="warning-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <i class="fas fa-exclamation-triangle"></i>
-                <h3>Warning: System Overload</h3>
-            </div>
-            <p>Do you wish to activate the Experimental Game Mode? This will initiate a full-screen sequence. Proceed with caution.</p>
-            <div class="modal-actions">
-                <button class="btn-yes" onclick="startGameMode()">Yes, Proceed</button>
-                <button class="btn-no" onclick="closeWarningModal()">No, Return</button>
-            </div>
+    <header>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
         </div>
-    </div>
-
-    <section id="about" class="about">
-        <video autoplay muted loop id="about-video-bg" class="video-bg about-video-bg" preload="auto">
-            <source src="THIS IS 4K ANIME YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+        <video autoplay muted loop playsinline class="header-video" preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%230a0e27' width='1920' height='1080'/%3E%3C/svg%3E">
+            <source src="THIS IS 4K ANIME (Tanjiro Kamado).mp4" type="video/mp4">
         </video>
-        <div class="about-video-overlay"></div>
 
-        <div class="about-container">
-            <div class="about-content">
-                <h2>About Me</h2>
-                <div class="profile-img-container">
-                    <img src="profile.jpg" alt="Euwan Gabriel B. Abogadie Profile" class="profile-img">
+        <div class="header-content">
+            <div class="profile-img-wrapper">
+                <div class="profile-frame">
+                    <div class="frame-corner frame-tl"></div>
+                    <div class="frame-corner frame-tr"></div>
+                    <div class="frame-corner frame-bl"></div>
+                    <div class="frame-corner frame-br"></div>
+                    <img src="profile.jpg" alt="Euwan Gabriel Abogadie" class="profile-img" onerror="this.src='https://via.placeholder.com/180/4CAF50/ffffff?text=EGA'">
                 </div>
-                <p>I am Euwan Gabriel B. Abogadie, a dedicated student and aspiring full-stack developer based in the Philippines. My journey in technology is driven by a passion for creating impactful and efficient digital solutions. I specialize in both front-end aesthetics and back-end logic, constantly seeking new challenges to enhance my technical skills. My goal is to leverage technology to solve real-world problems and contribute to innovative projects.</p>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <i class="fas fa-code-branch"></i>
-                        <strong>15+</strong>
-                        <span>Projects Completed</span>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-flask"></i>
-                        <strong>4+ Years</strong>
-                        <span>Development Experience</span>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-graduation-cap"></i>
-                        <strong>2026</strong>
-                        <span>Expected Graduation</span>
-                    </div>
+            </div>
+            <div class="header-text">
+                <h1>Euwan Gabriel B. Abogadie</h1>
+                <p class="subtitle">Software Developer & Tech Enthusiast</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Mapúa Malayan Colleges Mindanao | A221</p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/euwan123" target="_blank" aria-label="GitHub" class="social-btn">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank" aria-label="LinkedIn" class="social-btn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="section-header">
+            <h2><i class="fas fa-user-circle"></i> About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Hey there! I'm <strong>Euwan Gabriel B. Abogadie</strong>, currently a student at 
+                    Mapúa Malayan Colleges Mindanao, section A221. I've always been fascinated by how 
+                    software can make life easier, which is why I got into programming in the first place.
+                </p>
+
+                <p>
+                    What really excites me is creating applications that not only work well but also 
+                    look good and feel intuitive to use. Most of my work revolves around 
+                    <strong>C# development in Visual Studio 2022</strong>, where I enjoy building 
+                    Windows Forms applications with polished GUIs. I also work extensively with 
+                    <strong>Java in IntelliJ IDEA</strong>, creating robust applications that solve
+                    real problems.
+                </p>
+
+                <p>
+                    I'm the kind of person who gets genuinely excited about making buttons look just 
+                    right and tweaking layouts until everything feels natural. Whether it's a school project 
+                    or something I'm working on in my free time, I always try to balance functionality with 
+                    thoughtful design. I'm still learning and growing as a developer—but that's what makes it fun!
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>3+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code"></i>
+                    <h3>7+</h3>
+                    <p>Technologies</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-award"></i>
+                    <h3>5+</h3>
+                    <p>Achievements</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2>Technical Skills & Stats</h2>
-            
-            <div class="skills-grid-vertical">
-                
-                <div class="skills-category">
-                    <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">JavaScript</span>
-                        <div class="skill-bar"><div style="width: 90%;" data-width="90%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Python</span>
-                        <div class="skill-bar"><div style="width: 80%;" data-width="80%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">C#</span>
-                        <div class="skill-bar"><div style="width: 75%;" data-width="75%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">PHP</span>
-                        <div class="skill-bar"><div style="width: 70%;" data-width="70%"></div></div>
-                    </div>
+    <section id="skills">
+        <div class="section-header">
+            <h2><i class="fas fa-code-branch"></i> Technical Skills</h2>
+        </div>
+        <div class="skills">
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-java"></i> Java</span>
+                    <span>85%</span>
                 </div>
-
-                <div class="skills-category">
-                    <h3><i class="fas fa-cube"></i> Frameworks & Libraries</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">React / Next.js</span>
-                        <div class="skill-bar"><div style="width: 85%;" data-width="85%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Node.js / Express</span>
-                        <div class="skill-bar"><div style="width: 80%;" data-width="80%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Tailwind CSS / Bootstrap</span>
-                        <div class="skill-bar"><div style="width: 95%;" data-width="95%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Vue.js</span>
-                        <div class="skill-bar"><div style="width: 60%;" data-width="60%"></div></div>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3><i class="fas fa-wrench"></i> Databases & Tools</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">MongoDB</span>
-                        <div class="skill-bar"><div style="width: 85%;" data-width="85%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">MySQL / PostgreSQL</span>
-                        <div class="skill-bar"><div style="width: 75%;" data-width="75%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Git / GitHub</span>
-                        <div class="skill-bar"><div style="width: 90%;" data-width="90%"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Docker</span>
-                        <div class="skill-bar"><div style="width: 65%;" data-width="65%"></div></div>
-                    </div>
+                <div class="skill-bar">
+                    <div style="width: 85%"></div>
                 </div>
             </div>
-
-            <div class="interests-section">
-                <h3><i class="fas fa-heart"></i> Interests</h3>
-                <div class="interests-list">
-                    <span><i class="fas fa-gamepad"></i> Game Development</span>
-                    <span><i class="fas fa-brain"></i> Machine Learning</span>
-                    <span><i class="fas fa-paint-brush"></i> UI/UX Design</span>
-                    <span><i class="fas fa-robot"></i> Automation</span>
-                    <span><i class="fas fa-book"></i> Reading Tech Blogs</span>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fas fa-hashtag"></i> C#</span>
+                    <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 70%"></div>
                 </div>
             </div>
-            
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fas fa-copyright"></i> C++</span>
+                    <span>60%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 60%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-html5"></i> HTML</span>
+                    <span>50%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 50%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-css3-alt"></i> CSS</span>
+                    <span>45%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 45%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-js"></i> JavaScript</span>
+                    <span>40%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 40%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                    <span>65%</span>
+                </div>
+                <div class="skill-bar">
+                    <div style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="interests">
+            <h3><i class="fas fa-heart"></i> Expertise & Interests</h3>
+            <div class="interest-tags">
+                <span><i class="fas fa-paint-brush"></i> GUI Design</span>
+                <span><i class="fas fa-code"></i> C# Development</span>
+                <span><i class="fab fa-java"></i> Java Applications</span>
+                <span><i class="fas fa-window-maximize"></i> Visual Studio 2022</span>
+                <span><i class="fas fa-lightbulb"></i> IntelliJ IDEA</span>
+                <span><i class="fas fa-gamepad"></i> Gaming</span>
+                <span><i class="fas fa-blog"></i> Tech Blogs</span>
+            </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project">
+    <section id="projects">
+        <div class="section-header">
+            <h2><i class="fas fa-rocket"></i> My Projects</h2>
+        </div>
+        <div class="projects-container">
+            <div class="project">
+                <div class="project-glow"></div>
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
                     <div class="project-header">
-                        <i class="fas fa-pen-nib"></i>
-                        <h3>Baybayin StrokeSense</h3>
-                        <span class="project-tag tag-ml">Machine Learning</span>
+                        <h3>StrokeSense - Baybayin Interactive Learning</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> December 2025</span>
                     </div>
-                    <div class="project-content">
-                        <p>A web application that uses computer vision and machine learning to teach the correct stroke order and recognition of Baybayin (ancient Filipino script). Features real-time drawing validation and gamified learning modules.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>TensorFlow.js</span>
-                            <span>React</span>
-                            <span>OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fas fa-link"></i> Live Demo</a>
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
+                    <p>
+                        StrokeSense brings the beauty of the ancient Baybayin script to life with interactive AI technology,
+                        making learning engaging, personalized, and fun.
+                    </p>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
+                    <a href="https://euwan123.github.io/strokesense-landing-page/" target="_blank" class="project-button">
+                        <i class="fas fa-external-link-alt"></i> View Live Website
+                    </a>
                 </div>
-
-                <div class="project">
-                    <div class="project-header">
-                        <i class="fas fa-shopping-cart"></i>
-                        <h3>EGA Commerce Platform</h3>
-                        <span class="project-tag tag-fullstack">Full-Stack</span>
-                    </div>
-                    <div class="project-content">
-                        <p>A scalable, fully-featured e-commerce platform built with the MERN stack. Includes user authentication, product management, secure payment integration (Stripe/PayPal), and admin dashboards.</p>
-                        <div class="project-tech">
-                            <span>MongoDB</span>
-                            <span>Express.js</span>
-                            <span>React</span>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fas fa-link"></i> Live Demo</a>
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project">
-                    <div class="project-header">
-                        <i class="fas fa-comments"></i>
-                        <h3>Real-Time Chat App</h3>
-                        <span class="project-tag tag-backend">Backend</span>
-                    </div>
-                    <div class="project-content">
-                        <p>A high-performance chat application featuring private messaging, group chats, and real-time updates. Utilizes WebSockets for low-latency communication and robust server architecture.</p>
-                        <div class="project-tech">
-                            <span>Node.js</span>
-                            <span>Socket.io</span>
-                            <span>PostgreSQL</span>
-                            <span>Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fas fa-link"></i> Live Demo</a>
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                
             </div>
-        </div>
-    </section>
 
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <h2>Achievements & Certifications</h2>
-            <div class="achievements-grid">
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-medal"></i>
+            <div class="project">
+                <div class="project-glow"></div>
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-calendar-check"></i>
                     </div>
-                    <div class="achievement-details">
-                        <strong>First Place: Inter-School Hackathon 2023</strong>
-                        <span>Awarded for innovative solution using AI in a 48-hour challenge.</span>
+                    <div class="project-header">
+                        <h3>PlanIT - Event Management System</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> September 2025</span>
                     </div>
+                    <p>
+                        A comprehensive event management system developed with Group 7. Features event planning, scheduling,
+                        and coordination tools with a modern GUI interface.
+                    </p>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> C#, Windows Forms, Visual Studio 2022</p>
+                    <a href="https://github.com/Euwan123/Group-7-System-PlanIT" target="_blank" class="project-button">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
                 </div>
+            </div>
 
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-certificate"></i>
+            <div class="project">
+                <div class="project-glow"></div>
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-user-circle"></i>
                     </div>
-                    <div class="achievement-details">
-                        <strong>Certified: AWS Cloud Practitioner</strong>
-                        <span>Demonstrated foundational knowledge of AWS cloud concepts, security, and services.</span>
+                    <div class="project-header">
+                        <h3>Portfolio Website</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> November 2025</span>
                     </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="achievement-details">
-                        <strong>Top Contributor: Open Source Project 'X'</strong>
-                        <span>Recognized for significant contributions to core functionalities and documentation.</span>
-                    </div>
+                    <p>
+                        My personal portfolio website showcasing my skills, projects, and experience. 
+                        Features a responsive design with dark mode support and smooth animations.
+                    </p>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
+                    <a href="https://github.com/Euwan123/my-portfolio" target="_blank" class="project-button">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
+    <section id="achievements">
+        <div class="section-header">
+            <h2><i class="fas fa-medal"></i> Achievements</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Best in Problem Solving & Best Q&A</h3>
+                        <p>Won Best in Problem Solving and Best in Q&A in a coding project competition, demonstrating exceptional analytical and communication skills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>MMCM Cup Champion</h3>
+                        <p>Champion of MMCM Cup Mobile Legends Tournament. Demonstrated strategic thinking, teamwork, and leadership under pressure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <h3>BounceBack Basketball Simulator</h3>
+                        <p>Developed a basketball game simulator solo, winning Best Project, Problem Solving, and Best Q&A awards. Showcased game development and physics simulation skills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>C++ Programming Certificate</h3>
+                        <p>Earned C++ Programming Certificate with an outstanding score of 1371/1380 points, demonstrating mastery of advanced programming concepts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>C++ Crafting Code Participation</h3>
+                        <p>Certificate of Participation in C++ Crafting Code workshop, expanding knowledge in advanced C++ programming techniques and best practices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header">
+            <h2><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+        </div>
+        <p class="contact-intro">
+            I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!
+        </p>
+
+        <div class="contact-grid">
             <div class="contact-main-card">
                 <div class="contact-card-header">
-                    <h3>Get In Touch</h3>
-                    <p>I'm currently open to new opportunities and collaborations. Feel free to reach out!</p>
+                    <div class="pulse-dot"></div>
+                    <h3>Let's Connect!</h3>
                 </div>
-                <div class="contact-info-grid">
+                <p class="contact-description">
+                    Whether you have a project in mind, want to collaborate, or just want to say hi, 
+                    I'd love to hear from you. Drop me a message through any of these channels!
+                </p>
+                <div class="quick-links">
+                    <a href="mailto:egAbogadie@mcm.edu.ph" class="quick-link-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://github.com/euwan123" target="_blank" class="quick-link-btn">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank" class="quick-link-btn">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>Email</strong> 
-                            <a href="mailto:euwan.abogadie@email.com">euwan.abogadie@email.com</a>
-                        </div>
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
                     </div>
+                    <div class="contact-details">
+                        <strong>Email</strong> 
+                        <a href="mailto:egAbogadie@mcm.edu.ph">egAbogadie@mcm.edu.ph</a>
+                    </div>
+                </div>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>Phone</strong> 
-                            <span>+63 9XX XXX XXXX</span>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>GitHub</strong> 
-                            <a href="https://github.com/euwan123" target="_blank">github.com/euwan123</a>
-                        </div>
+                    <div class="contact-details">
+                        <strong>GCash Donation</strong> 
+                        <a href="tel:+639937623375">+63 993 762 3375</a>
                     </div>
+                </div>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>LinkedIn</strong> 
-                            <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank">
-                                linkedin.com/in/euwan-abogadie
-                            </a>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
+                    <div class="contact-details">
+                        <strong>Location</strong> 
+                        <span>Matina Aplaya, Davao City, Philippines</span>
+                    </div>
+                </div>
 
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
                     </div>
+                    <div class="contact-details">
+                        <strong>GitHub</strong> 
+                        <a href="https://github.com/euwan123" target="_blank">github.com/euwan123</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>LinkedIn</strong> 
+                        <a href="https://www.linkedin.com/in/euwan-abogadie-833980313/" target="_blank">
+                            linkedin.com/in/euwan-abogadie
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-item response-time">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>Response Time</strong> 
+                        <span>Usually within 24-48 hours</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
