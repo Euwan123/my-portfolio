@@ -15,86 +15,6 @@ function scrollToTop() {
     });
 }
 
-function openGameModePrompt() {
-    const overlay = document.getElementById('game-mode-overlay');
-    const prompt = document.getElementById('game-mode-prompt');
-    const screen = document.getElementById('game-mode-screen');
-    const video = document.querySelector('.game-mode-video');
-    const gui = document.getElementById('developer-mode-gui');
-    
-    gui.classList.remove('gui-active');
-    video.classList.remove('fade-in-active');
-    
-    screen.style.display = 'none';
-    prompt.style.display = 'block';
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeGameModePrompt() {
-    const overlay = document.getElementById('game-mode-overlay');
-    const video = document.querySelector('.game-mode-video');
-    const gui = document.getElementById('developer-mode-gui');
-    
-    document.body.classList.remove('developer-mode');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-
-    if (video) {
-        video.pause();
-        video.currentTime = 0;
-    }
-    gui.classList.remove('gui-active');
-    video.classList.remove('fade-in-active');
-}
-
-function startGameMode() {
-    const prompt = document.getElementById('game-mode-prompt');
-    const screen = document.getElementById('game-mode-screen');
-    const video = document.querySelector('.game-mode-video');
-    const gui = document.getElementById('developer-mode-gui');
-    
-    const videoDuration = parseFloat(video.getAttribute('data-video-duration')) || 17;
-
-    prompt.style.display = 'none';
-    screen.style.display = 'flex';
-    document.body.classList.add('developer-mode');
-    
-    if (video) {
-        video.classList.add('fade-in-active');
-        video.loop = false;
-        video.currentTime = 0;
-        const playPromise = video.play();
-
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-                setTimeout(() => {
-                    video.pause();
-                    video.currentTime = video.duration; 
-                    gui.classList.add('gui-active');
-                }, videoDuration * 1000);
-            })
-            .catch(error => {
-                console.error("Video playback prevented:", error);
-                // Fallback to show GUI immediately if video fails
-                gui.classList.add('gui-active');
-            });
-        } else {
-            // Fallback for immediate GUI display
-            setTimeout(() => {
-                video.pause();
-                gui.classList.add('gui-active');
-            }, videoDuration * 1000);
-        }
-    } else {
-        gui.classList.add('gui-active');
-    }
-}
-
-function exitGameMode() {
-    closeGameModePrompt();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     try {
         const savedTheme = localStorage.getItem('darkMode');
@@ -128,49 +48,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skillBars.forEach(bar => observer.observe(bar));
 
-    const sections = document.querySelectorAll('section');
-    const sectionObserverOptions = {
-        threshold: 0.2
-    };
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                sectionObserver.unobserve(entry.target);
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = anchor.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
-    }, sectionObserverOptions);
+    });
 
-    sections.forEach(section => sectionObserver.observe(section));
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
 
-    const timeline = document.querySelector('.timeline');
-    if (timeline) {
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    timeline.classList.add('visible');
-                    timelineObserver.unobserve(timeline);
-                }
-            });
-        }, { threshold: 0.1 });
-        timelineObserver.observe(timeline);
-    }
-
-    const scrollToTopButton = document.querySelector('.scroll-to-top');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollToTopButton.classList.add('visible');
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            
+            if (window.pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+
+        const scrollToTopBtn = document.querySelector('.scroll-to-top');
+        if (window.pageYOffset > 500) {
+            scrollToTopBtn.classList.add('visible');
         } else {
-            scrollToTopButton.classList.remove('visible');
+            scrollToTopBtn.classList.remove('visible');
         }
     });
 
-    const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
             if (document.body.classList.contains('dark-mode')) {
-                nav.style.boxShadow = '0 2px 30px rgba(233, 30, 99, 0.2)';
+                nav.style.boxShadow = '0 2px 30px rgba(0, 255, 136, 0.2)';
             } else {
                 nav.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
             }
