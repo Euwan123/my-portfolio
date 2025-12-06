@@ -15,6 +15,53 @@ function scrollToTop() {
     });
 }
 
+function openGameModePrompt() {
+    const overlay = document.getElementById('game-mode-overlay');
+    const prompt = document.getElementById('game-mode-prompt');
+    const screen = document.getElementById('game-mode-screen');
+    
+    screen.style.display = 'none';
+    prompt.style.display = 'block';
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGameModePrompt() {
+    const overlay = document.getElementById('game-mode-overlay');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function startGameMode() {
+    const prompt = document.getElementById('game-mode-prompt');
+    const screen = document.getElementById('game-mode-screen');
+    const video = document.querySelector('.game-mode-video');
+    
+    prompt.style.display = 'none';
+    screen.style.display = 'flex';
+    
+    document.body.classList.add('developer-mode');
+    
+    if (video) {
+        video.currentTime = 0;
+        video.play();
+    }
+}
+
+function exitGameMode() {
+    const overlay = document.getElementById('game-mode-overlay');
+    const video = document.querySelector('.game-mode-video');
+    
+    document.body.classList.remove('developer-mode');
+    
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+    
+    closeGameModePrompt();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     try {
         const savedTheme = localStorage.getItem('darkMode');
@@ -48,58 +95,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skillBars.forEach(bar => observer.observe(bar));
 
-    document.querySelectorAll('nav ul li a').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = anchor.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav ul li a');
+    const sectionObserverOptions = {
+        threshold: 0.2
+    };
 
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, sectionObserverOptions);
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    const timeline = document.querySelector('.timeline');
+    if (timeline) {
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timeline.classList.add('visible');
+                    timelineObserver.unobserve(timeline);
+                }
+            });
+        }, { threshold: 0.1 });
+        timelineObserver.observe(timeline);
+    }
+
+    const scrollToTopButton = document.querySelector('.scroll-to-top');
     window.addEventListener('scroll', () => {
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            
-            if (window.pageYOffset >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-
-        const scrollToTopBtn = document.querySelector('.scroll-to-top');
-        if (window.pageYOffset > 500) {
-            scrollToTopBtn.classList.add('visible');
+        if (window.scrollY > 300) {
+            scrollToTopButton.classList.add('visible');
         } else {
-            scrollToTopBtn.classList.remove('visible');
+            scrollToTopButton.classList.remove('visible');
         }
     });
 
+    const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
+        if (window.scrollY > 0) {
             if (document.body.classList.contains('dark-mode')) {
-                nav.style.boxShadow = '0 2px 30px rgba(0, 255, 136, 0.2)';
+                nav.style.boxShadow = '0 2px 30px rgba(233, 30, 99, 0.2)';
             } else {
                 nav.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
             }
