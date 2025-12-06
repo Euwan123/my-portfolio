@@ -7,11 +7,38 @@
     height: 100%;
     z-index: 20001;
     overflow-y: auto;
-    animation: slideInFromRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
 }
 
 .game-mode-gui.active {
     display: block;
+    animation: fadeInSlow 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInSlow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.game-mode-gui::-webkit-scrollbar {
+    width: 12px;
+}
+
+.game-mode-gui::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.game-mode-gui::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c62828, #ef5350);
+    border-radius: 6px;
+}
+
+.game-mode-gui::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ef5350, #c62828);
 }
 
 .game-mode-bg-video {
@@ -50,10 +77,51 @@
 .game-mode-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: #ef5350;
     text-shadow: 0 0 20px rgba(239, 83, 80, 0.8);
     font-weight: 700;
+}
+
+.solo-stats {
+    background: rgba(26, 10, 10, 0.8);
+    border: 2px solid #c62828;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(198, 40, 40, 0.2);
+    border-radius: 10px;
+    border-left: 4px solid #ef5350;
+}
+
+.stat-row:last-child {
+    margin-bottom: 0;
+}
+
+.stat-row .stat-label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.stat-row .stat-value {
+    font-size: 1.2rem;
+    color: #ef5350;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
 }
 
 @keyframes slideInFromRight {
@@ -174,23 +242,100 @@
 }
 
 .exit-game-btn {
-    display: block;
-    margin: 3rem auto 0;
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 20002;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
     font-weight: 700;
     background: linear-gradient(135deg, #c62828, #ef5350);
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 8px 30px rgba(198, 40, 40, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .exit-game-btn:hover {
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-3px) scale(1.05);
     box-shadow: 0 12px 40px rgba(198, 40, 40, 0.5);
+}
+
+.anime-section {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.anime-section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #ef5350;
+    text-shadow: 0 0 20px rgba(239, 83, 80, 0.8);
+    font-weight: 700;
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.anime-card {
+    background: rgba(26, 10, 10, 0.7);
+    border: 2px solid #c62828;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.anime-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(239, 83, 80, 0.1) 0%, transparent 70%);
+    animation: rotateGlow 10s linear infinite;
+    pointer-events: none;
+}
+
+.anime-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #ef5350;
+    box-shadow: 0 15px 50px rgba(198, 40, 40, 0.5), 0 0 30px rgba(239, 83, 80, 0.3);
+}
+
+.anime-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #c62828, #ef5350);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 4px 15px rgba(198, 40, 40, 0.5);
+}
+
+.anime-card h3 {
+    font-size: 1.2rem;
+    color: #ef5350;
+    font-weight: 600;
 }
 
 .skip-video-btn,
@@ -243,6 +388,15 @@
     .game-mode-title {
         font-size: 2rem;
     }
+
+    .solo-stats {
+        max-width: 500px;
+        padding: 1.5rem;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
@@ -255,6 +409,30 @@
     }
 
     .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .solo-stats {
+        padding: 1.2rem;
+    }
+
+    .stat-row {
+        padding: 0.8rem;
+    }
+
+    .stat-row .stat-label {
+        font-size: 1rem;
+    }
+
+    .stat-row .stat-value {
+        font-size: 1rem;
+    }
+
+    .anime-section-title {
+        font-size: 1.5rem;
+    }
+
+    .anime-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -277,5 +455,26 @@
         padding: 0.4rem 1rem;
         font-size: 0.8rem;
         min-width: 60px;
+    }
+
+    .solo-stats {
+        padding: 1rem;
+    }
+
+    .stat-row {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .anime-section-title {
+        font-size: 1.2rem;
+    }
+
+    .exit-game-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        top: 10px;
+        left: 10px;
     }
 }
