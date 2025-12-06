@@ -1,6 +1,8 @@
 function showGameModeGUI() {
     const gameGUI = document.getElementById('gameModeGUI');
     if (gameGUI) {
+        gameGUI.style.display = 'block';
+        gameGUI.style.opacity = '1';
         gameGUI.classList.add('active');
     }
 }
