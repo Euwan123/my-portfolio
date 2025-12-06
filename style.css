@@ -1878,10 +1878,11 @@ body.dark-mode .quick-link-btn:hover {
 
 footer {
     text-align: center;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem 1.5rem;
     background-color: var(--bg-section-light);
     color: var(--text-secondary-light);
     margin-top: 2rem;
+    margin-bottom: 0;
     border-top: 2px solid rgba(198, 40, 40, 0.1);
     position: relative;
     z-index: 1;
