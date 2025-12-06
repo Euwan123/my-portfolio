@@ -41,17 +41,23 @@ function playGameModeVideo() {
     video.currentTime = 0;
     video.play();
     
-    const stopVideo = function() {
-        video.pause();
-        videoContainer.classList.remove('active');
+    const showGUI = function() {
         if (typeof showGameModeGUI === 'function') {
             showGameModeGUI();
         }
+        videoContainer.classList.remove('active');
+        video.pause();
     };
     
-    setTimeout(stopVideo, 16000);
+    setTimeout(showGUI, 15000);
     
-    video.addEventListener('ended', stopVideo, { once: true });
+    video.addEventListener('ended', showGUI, { once: true });
+    video.addEventListener('timeupdate', function() {
+        if (video.currentTime >= 15) {
+            showGUI();
+            video.removeEventListener('timeupdate', arguments.callee);
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
