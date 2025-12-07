@@ -76,14 +76,43 @@ function playGameModeVideo() {
     }, { once: true });
 }
 
+function skipLoadingVideo() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingVideo = document.getElementById('loading-video');
+    const skipBtn = document.querySelector('.skip-loading-btn');
+    const body = document.body;
+
+    if (skipBtn) {
+        skipBtn.classList.add('hidden');
+    }
+
+    if (loadingVideo) {
+        loadingVideo.pause();
+    }
+
+    if (loadingScreen) {
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => {
+            body.classList.remove('loading');
+            if (loadingScreen.parentNode) {
+                loadingScreen.style.display = 'none';
+            }
+        }, 800);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.getElementById('loading-screen');
     const loadingVideo = document.getElementById('loading-video');
+    const skipBtn = document.querySelector('.skip-loading-btn');
     const body = document.body;
 
     body.classList.add('loading');
 
     function hideLoadingScreen() {
+        if (skipBtn) {
+            skipBtn.classList.add('hidden');
+        }
         if (loadingScreen && loadingVideo) {
             loadingScreen.classList.add('hidden');
             setTimeout(() => {
