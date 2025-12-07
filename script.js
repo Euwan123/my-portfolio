@@ -44,7 +44,7 @@ function playGameModeVideo() {
     
     let guiStarted = false;
     
-    video.addEventListener('timeupdate', function() {
+    const handleTimeUpdate = function() {
         const currentTime = video.currentTime;
         const videoDuration = video.duration || 16;
         const fadeStartTime = videoDuration - 2;
@@ -64,9 +64,11 @@ function playGameModeVideo() {
             videoContainer.classList.remove('active');
             video.pause();
             gameGUI.classList.add('active');
-            video.removeEventListener('timeupdate', arguments.callee);
+            video.removeEventListener('timeupdate', handleTimeUpdate);
         }
-    }, { passive: true });
+    };
+    
+    video.addEventListener('timeupdate', handleTimeUpdate, { passive: true });
     
     video.addEventListener('ended', function() {
         videoContainer.classList.remove('active');
@@ -75,6 +77,43 @@ function playGameModeVideo() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingVideo = document.getElementById('loading-video');
+    const body = document.body;
+
+    body.classList.add('loading');
+
+    function hideLoadingScreen() {
+        if (loadingScreen && loadingVideo) {
+            loadingScreen.classList.add('hidden');
+            setTimeout(() => {
+                body.classList.remove('loading');
+                if (loadingScreen.parentNode) {
+                    loadingScreen.style.display = 'none';
+                }
+            }, 800);
+        }
+    }
+
+    if (loadingVideo) {
+        loadingVideo.addEventListener('ended', hideLoadingScreen);
+        loadingVideo.addEventListener('loadeddata', () => {
+            loadingVideo.play().catch(e => {
+                console.warn('Video autoplay prevented:', e);
+                hideLoadingScreen();
+            });
+        });
+
+        if (loadingVideo.readyState >= 2) {
+            loadingVideo.play().catch(e => {
+                console.warn('Video autoplay prevented:', e);
+                hideLoadingScreen();
+            });
+        }
+    } else {
+        hideLoadingScreen();
+    }
+
     try {
         const savedTheme = localStorage.getItem('darkMode');
         if (savedTheme === null || savedTheme === 'true') {
