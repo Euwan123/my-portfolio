@@ -309,6 +309,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const aiButtons = document.querySelectorAll('.ai-btn');
     const aiMessages = document.getElementById('aiMessages');
+    const aiTyping = document.getElementById('aiTyping');
+    const aiAssistant = document.getElementById('aiAssistant');
+    const aiToggle = document.getElementById('aiToggle');
+    const aiCategories = document.querySelectorAll('.ai-category');
+    const aiGroups = document.querySelectorAll('.ai-buttons-group');
+    const dragHandle = document.getElementById('aiDragHandle');
 
     function appendMessage(text, type) {
         if (!aiMessages) return;
@@ -316,7 +322,24 @@ document.addEventListener('DOMContentLoaded', () => {
         bubble.className = `ai-message ${type}`;
         bubble.textContent = text;
         aiMessages.appendChild(bubble);
-        aiMessages.scrollTop = aiMessages.scrollHeight;
+        aiMessages.scrollTo({ top: aiMessages.scrollHeight, behavior: 'smooth' });
+    }
+
+    function showTyping(show) {
+        if (!aiTyping) return;
+        aiTyping.classList.toggle('active', show);
+    }
+
+    function handleCategory(groupName) {
+        aiCategories.forEach(cat => cat.classList.toggle('active', cat.dataset.group === groupName));
+        aiGroups.forEach(g => g.classList.toggle('active', g.dataset.group === groupName));
+    }
+
+    if (aiCategories.length && aiGroups.length) {
+        handleCategory('about');
+        aiCategories.forEach(cat => {
+            cat.addEventListener('click', () => handleCategory(cat.dataset.group));
+        });
     }
 
     aiButtons.forEach(btn => {
@@ -324,7 +347,80 @@ document.addEventListener('DOMContentLoaded', () => {
             const question = btn.getAttribute('data-question') || '';
             const answer = btn.getAttribute('data-answer') || '';
             appendMessage(question, 'ai-user');
-            appendMessage(answer, 'ai-bot');
+            showTyping(true);
+            setTimeout(() => {
+                showTyping(false);
+                appendMessage(answer, 'ai-bot');
+            }, 600);
         });
     });
+
+    if (aiToggle && aiAssistant) {
+        aiAssistant.classList.add('minimized');
+        aiToggle.addEventListener('click', () => {
+            aiAssistant.classList.toggle('minimized');
+            aiToggle.textContent = aiAssistant.classList.contains('minimized') ? '▼' : '▲';
+        });
+    }
+
+    if (aiAssistant && dragHandle) {
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        const startDrag = (e) => {
+            isDragging = true;
+            const rect = aiAssistant.getBoundingClientRect();
+            const pointerX = e.touches ? e.touches[0].clientX : e.clientX;
+            const pointerY = e.touches ? e.touches[0].clientY : e.clientY;
+            offsetX = pointerX - rect.left;
+            offsetY = pointerY - rect.top;
+            document.addEventListener('mousemove', onDrag);
+            document.addEventListener('touchmove', onDrag, { passive: false });
+            document.addEventListener('mouseup', stopDrag);
+            document.addEventListener('touchend', stopDrag);
+        };
+
+        const onDrag = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const pointerX = e.touches ? e.touches[0].clientX : e.clientX;
+            const pointerY = e.touches ? e.touches[0].clientY : e.clientY;
+            const left = pointerX - offsetX;
+            const top = pointerY - offsetY;
+            aiAssistant.style.left = `${Math.max(10, Math.min(window.innerWidth - aiAssistant.offsetWidth - 10, left))}px`;
+            aiAssistant.style.top = `${Math.max(10, Math.min(window.innerHeight - aiAssistant.offsetHeight - 10, top))}px`;
+            aiAssistant.style.right = 'auto';
+            aiAssistant.style.bottom = 'auto';
+        };
+
+        const stopDrag = () => {
+            isDragging = false;
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('touchmove', onDrag);
+            document.removeEventListener('mouseup', stopDrag);
+            document.removeEventListener('touchend', stopDrag);
+        };
+
+        dragHandle.addEventListener('mousedown', startDrag);
+        dragHandle.addEventListener('touchstart', startDrag, { passive: false });
+    }
+
+    const mottos = [
+        'Code, test, learn, repeat.',
+        'Build boldly, refactor wisely.',
+        'Ship fast, polish faster.',
+        'Debug the bug, learn the lesson.',
+        'Design with empathy, code with intent.'
+    ];
+    const mottoText = document.getElementById('mottoText');
+    const mottoBtn = document.getElementById('mottoBtn');
+    let mottoIndex = 0;
+
+    if (mottoText && mottoBtn) {
+        mottoBtn.addEventListener('click', () => {
+            mottoIndex = (mottoIndex + 1) % mottos.length;
+            mottoText.textContent = mottos[mottoIndex];
+        });
+    }
 });
