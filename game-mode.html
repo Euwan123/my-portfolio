@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euwan | Game Mode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="game-mode.css">
+</head>
+<body class="dark-mode">
+    <video autoplay muted loop playsinline class="game-mode-bg-video" preload="metadata">
+        <source src="THIS IS 4K ANIME (Solo Leveling).mp4" type="video/mp4">
+    </video>
+
+    <div id="gameModeGUI" class="game-mode-gui active">
+        <div class="game-mode-content">
+            <h1 class="game-mode-name">Euwan Gabriel B. Abogadie</h1>
+            <h2 class="game-mode-title">GAME MODE</h2>
+            <div class="stats-container">
+                <div class="solo-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">Health</span>
+                        <span class="stat-value">1/10000</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Defense</span>
+                        <span class="stat-value">2/5000</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Attack</span>
+                        <span class="stat-value">-1/10000</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Intelligence</span>
+                        <span class="stat-value">10000/10000</span>
+                    </div>
+                </div>
+                <div class="secondary-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">Money</span>
+                        <span class="stat-value">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Energy</span>
+                        <span class="stat-value">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Motivation</span>
+                        <span class="stat-value">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Strength</span>
+                        <span class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon">ML</div>
+                    <h3>Mobile Legends</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Rank</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Matches</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Win Rate</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">D2</div>
+                    <h3>Dota 2</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">MMR</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Matches</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Win Rate</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">RB</div>
+                    <h3>Roblox</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Games</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Badges</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">MC</div>
+                    <h3>Minecraft</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Playtime</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Achievements</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">COD</div>
+                    <h3>Call of Duty</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">K/D</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Wins</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">COC</div>
+                    <h3>Clash of Clans</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Town Hall</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Trophies</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">War Stars</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">SLA</div>
+                    <h3>Solo Leveling Arise</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Power</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Rank</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">GI</div>
+                    <h3>Genshin Impact</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">AR</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Characters</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Achievements</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">HI</div>
+                    <h3>Honkai Impact</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Valkyries</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Abyss</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">LDE</div>
+                    <h3>Last Day on Earth</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Survival</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Base Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">TR</div>
+                    <h3>Terraria</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Difficulty</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Bosses</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Playtime</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">MW</div>
+                    <h3>Call of Duty 2: Modern Warfare</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">K/D</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Wins</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">DC</div>
+                    <h3>Dragon City</h3>
+                    <div class="game-stats-grid">
+                        <div class="game-stat-item">
+                            <span class="stat-name">Level</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Dragons</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                        <div class="game-stat-item">
+                            <span class="stat-name">Trophies</span>
+                            <span class="stat-data">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="anime-section">
+                <h2 class="anime-section-title">Anime Watched</h2>
+                <div class="anime-grid">
+                    <div class="anime-card">
+                        <div class="anime-icon">OP</div>
+                        <h3>One Piece</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">AOT</div>
+                        <h3>Attack on Titan</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">BL</div>
+                        <h3>Bleach</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">SD</div>
+                        <h3>Slam Dunk</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">SL</div>
+                        <h3>Solo Leveling</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">DB</div>
+                        <h3>Dragon Ball</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">DN</div>
+                        <h3>Death Note</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">DS</div>
+                        <h3>Demon Slayer</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">NR</div>
+                        <h3>Naruto</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">NS</div>
+                        <h3>Naruto Shippuden</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">BT</div>
+                        <h3>Boruto</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">KB</div>
+                        <h3>Kuroko no Basket</h3>
+                    </div>
+                    <div class="anime-card">
+                        <div class="anime-icon">SAO</div>
+                        <h3>Sword Art Online</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="game-mode-features">
+                <h2 class="features-title">System Status</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-server"></i></div>
+                        <h3>Server Status</h3>
+                        <div class="feature-status online">Online</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Security Level</h3>
+                        <div class="feature-status secure">Maximum</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Performance</h3>
+                        <div class="feature-status optimal">Optimal</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Connection</h3>
+                        <div class="feature-status stable">Stable</div>
+                    </div>
+                </div>
+            </div>
+            <div class="achievement-showcase">
+                <h2 class="showcase-title">Recent Achievements</h2>
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Portfolio Master</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-code"></i>
+                        <span>Code Warrior</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-gamepad"></i>
+                        <span>Game Enthusiast</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-film"></i>
+                        <span>Anime Connoisseur</span>
+                    </div>
+                </div>
+            </div>
+            <button class="exit-game-btn" onclick="exitGameMode()">Back to Profile</button>
+        </div>
+    </div>
+
+    <script src="game-mode.js"></script>
+</body>
+</html>
+
