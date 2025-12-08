@@ -174,40 +174,63 @@ function activateTab(targetId, defs) {
 function updateGameStats() {
     const updates = {
         'Mobile Legends': [
-            { label: 'Max Rank', value: '124 stars Mythical Immortal' },
-            { label: 'Total Matches', value: '4,206' },
-            { label: 'Win Rate', value: '63.7%' }
+            { label: 'Max Rank', value: '124 Stars Mythical Immortal', percent: 99.8 },
+            { label: 'Total Matches', value: '4,206', percent: 90.2 },
+            { label: 'Win Rate', value: '63% (4,200 matches)', percent: 97 }
         ],
         'Dota 2': [
-            { label: 'Max MMR', value: '3,402' },
-            { label: 'Max Rank', value: 'Legend 3' },
-            { label: 'Total Hours', value: '4,448.2' }
+            { label: 'Max MMR', value: '3,402', percent: 89.3 },
+            { label: 'Max Rank', value: 'Legend 3', percent: 75 },
+            { label: 'Total Hours', value: '4,448.2', percent: 91.4 }
         ],
         'Roblox': [
-            { label: 'Total Robux', value: '102,439' },
-            { label: 'Games Played', value: '231' },
-            { label: 'Badges', value: '—' }
+            { label: 'Total Robux', value: '102,439', percent: 88 },
+            { label: 'Games Played', value: '231', percent: 72 },
+            { label: 'Badges', value: '—', percent: 60 }
         ],
         'Minecraft': [
-            { label: 'Total Worlds', value: '6' },
-            { label: 'Avg Days', value: '302.5' },
-            { label: 'Achievements', value: '—' }
+            { label: 'Total Worlds', value: '6', percent: 68 },
+            { label: 'Avg Days', value: '302.5', percent: 82 },
+            { label: 'Achievements', value: '—', percent: 55 }
         ]
     };
 
-    Object.keys(updates).forEach(name => {
-        const card = Array.from(document.querySelectorAll('.game-card')).find(
-            node => node.querySelector('h3') && node.querySelector('h3').textContent.trim() === name
-        );
-        if (!card) return;
+    const defaultEntry = [
+        { label: 'Progress', value: '—', percent: 65 },
+        { label: 'Completion', value: '—', percent: 65 },
+        { label: 'Efficiency', value: '—', percent: 65 }
+    ];
+
+    const clamp = v => Math.max(0, Math.min(100, Number(v)));
+
+    Array.from(document.querySelectorAll('.game-card')).forEach(card => {
+        const title = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
         const rows = card.querySelectorAll('.game-stat-item');
-        updates[name].forEach((entry, idx) => {
+        const payload = updates[title] || defaultEntry;
+        payload.forEach((entry, idx) => {
             const row = rows[idx];
             if (!row) return;
             const label = row.querySelector('.stat-name');
             const value = row.querySelector('.stat-data');
             if (label) label.textContent = entry.label;
             if (value) value.textContent = entry.value;
+
+            let bar = row.querySelector('.stat-bar');
+            if (!bar) {
+                bar = document.createElement('div');
+                bar.className = 'stat-bar';
+                const span = document.createElement('span');
+                const percentEl = document.createElement('div');
+                percentEl.className = 'stat-percent';
+                bar.appendChild(span);
+                bar.appendChild(percentEl);
+                row.appendChild(bar);
+            }
+            const spanEl = bar.querySelector('span');
+            const percEl = bar.querySelector('.stat-percent');
+            const pct = clamp(entry.percent);
+            if (spanEl) spanEl.style.width = `${pct}%`;
+            if (percEl) percEl.textContent = `${pct}%`;
         });
     });
 }
