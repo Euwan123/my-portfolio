@@ -2299,14 +2299,6 @@ body.dark-mode footer {
     margin-top: 1.5rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-    }
-}
-
 .footer-tagline {
     margin-top: 0.5rem;
     font-size: 0.9rem;
