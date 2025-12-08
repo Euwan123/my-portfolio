@@ -213,27 +213,21 @@ function updateGameStats() {
 }
 
 function initLazyVideos() {
-    const videos = [document.querySelector('.game-mode-bg-video')].filter(Boolean);
-    videos.forEach(v => {
-        v.autoplay = false;
-        v.preload = 'metadata';
-        const source = v.querySelector('source');
-        if (source && source.src) {
-            source.dataset.src = source.src;
-            source.src = '';
-        }
-        v.load();
-    });
+    const bg = document.querySelector('.game-mode-bg-video');
+    if (!bg) return;
+    bg.preload = 'auto';
+    bg.autoplay = true;
+    bg.muted = true;
+    bg.playsInline = true;
+    bg.loop = true;
+    bg.load();
 }
 
 function loadLazyVideo(video, autoplay) {
     if (!video) return;
-    const source = video.querySelector('source');
-    if (source && !source.src && source.dataset.src) {
-        source.src = source.dataset.src;
-        video.load();
+    if (autoplay) {
+        video.play().catch(() => {});
     }
-    if (autoplay) video.play().catch(() => {});
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -246,4 +240,3 @@ document.addEventListener('DOMContentLoaded', () => {
         loadLazyVideo(bgVideo, true);
     }
 });
-
