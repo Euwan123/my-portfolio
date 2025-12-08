@@ -43,6 +43,7 @@ function playGameModeVideo() {
         return;
     }
 
+    document.body.classList.add('gm-transition');
     videoContainer.classList.add('active');
     video.currentTime = 0;
     video.play().catch(() => {
@@ -51,7 +52,6 @@ function playGameModeVideo() {
     });
 
     const finish = () => {
-        videoContainer.classList.remove('active');
         window.location.href = 'game-mode.html';
     };
 
