@@ -12,7 +12,7 @@
 </head>
 <body class="dark-mode">
     <div id="loading-screen" class="loading-screen">
-        <button class="skip-loading-btn" onclick="skipLoadingVideo()" title="Skip">S</button>
+        <button class="skip-loading-btn" onclick="skipLoadingVideo()" title="Skip">Skip</button>
         <video id="loading-video" class="loading-video" autoplay muted playsinline>
             <source src="loading bar effect.mp4" type="video/mp4">
         </video>
@@ -123,7 +123,7 @@
             <div class="about-stats">
                 <div class="stat-card">
                     <i class="fas fa-project-diagram"></i>
-                    <h3>3+</h3>
+                    <h3>7+</h3>
                     <p>Projects Completed</p>
                 </div>
                 <div class="stat-card">
@@ -244,6 +244,9 @@
                         making learning engaging, personalized, and fun.
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
+                    <div class="project-image-frame">
+                        <img src="StrokeSense.png" alt="StrokeSense preview" class="project-img" data-large="StrokeSense.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=StrokeSense'">
+                    </div>
                     <a href="https://euwan123.github.io/strokesense-landing-page/" target="_blank" class="project-button">
                         <i class="fas fa-external-link-alt"></i> View Live Website
                     </a>
@@ -265,6 +268,9 @@
                         and coordination tools with a modern GUI interface.
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> C#, Windows Forms, Visual Studio 2022</p>
+                    <div class="project-image-frame">
+                        <img src="PlanIT.png" alt="PlanIT preview" class="project-img" data-large="PlanIT.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=PlanIT'">
+                    </div>
                     <a href="https://github.com/Euwan123/Group-7-System-PlanIT" target="_blank" class="project-button">
                         <i class="fab fa-github"></i> View Repository
                     </a>
@@ -286,9 +292,72 @@
                         Features a responsive design with dark mode support and smooth animations.
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
+                    <div class="project-image-frame">
+                        <img src="portfolio-preview.png" alt="Portfolio preview" class="project-img" data-large="portfolio-preview.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Portfolio'">
+                    </div>
                     <a href="https://github.com/Euwan123/my-portfolio" target="_blank" class="project-button">
                         <i class="fab fa-github"></i> View Repository
                     </a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-glow"></div>
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <div class="project-header">
+                        <h3>Bounceback Basketball Simulator</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> January 2025</span>
+                    </div>
+                    <p>
+                        A Java-based basketball management simulator built in IntelliJ. Handle trades, player value, expenses, roster building, and team creation with a focus on strategy.
+                    </p>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
+                    <div class="project-image-frame">
+                        <img src="bounceback.png" alt="Bounceback Basketball Simulator preview" class="project-img" data-large="bounceback.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Bounceback'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-glow"></div>
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="project-header">
+                        <h3>Smart or Broke Simulator</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> June 2025</span>
+                    </div>
+                    <p>
+                        A money management game in Java (IntelliJ) where players make financial decisions, balance income and expenses, and learn smart budgeting through guided scenarios.
+                    </p>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
+                    <div class="project-image-frame">
+                        <img src="Smart or Broke Simulator.png" alt="Smart or Broke Simulator preview" class="project-img" data-large="Smart or Broke Simulator.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Smart+or+Broke'">
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-glow"></div>
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-stream"></i>
+                    </div>
+                    <div class="project-header">
+                        <h3>Daily Schedule Parser</h3>
+                        <span class="project-date"><i class="far fa-calendar"></i> September 2025</span>
+                    </div>
+                    <p>
+                        A Java parser that reads natural language schedules, builds parse trees, and outputs structured timelines for daily plans with grammar-aware validation.
+                    </p>
+                    <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
+                    <div class="project-image-frame">
+                        <img src="Daily Schedule Parser.png" alt="Daily Schedule Parser preview" class="project-img" data-large="Daily Schedule Parser.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Schedule+Parser'">
+                    </div>
                 </div>
             </div>
         </div>
@@ -871,6 +940,31 @@
                 </div>
             </div>
             <button class="exit-game-btn" onclick="exitGameMode()">Back to Profile</button>
+        </div>
+    </div>
+
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <button class="image-modal-close" aria-label="Close image" onclick="closeImageModal()">✕</button>
+            <img id="modalImage" src="" alt="Project preview">
+        </div>
+    </div>
+
+    <div class="ai-assistant" id="aiAssistant">
+        <div class="ai-assistant-header">
+            <div class="ai-status-dot"></div>
+            <div class="ai-title">AI Assistant</div>
+        </div>
+        <div class="ai-assistant-body">
+            <div class="ai-messages" id="aiMessages">
+                <div class="ai-message ai-bot">Hi! Choose a question below.</div>
+            </div>
+            <div class="ai-buttons">
+                <button class="ai-btn" data-question="Who are you?" data-answer="I'm a friendly assistant built into Euwan's portfolio.">Who are you?</button>
+                <button class="ai-btn" data-question="Who coded this site?" data-answer="This site was coded by Euwan Gabriel B. Abogadie.">Who coded this site?</button>
+                <button class="ai-btn" data-question="What can you do?" data-answer="I can guide you around the portfolio and highlight Euwan's projects and skills.">What can you do?</button>
+                <button class="ai-btn" data-question="How to contact Euwan?" data-answer="Email: egAbogadie@mcm.edu.ph | GitHub: github.com/euwan123 | LinkedIn: linkedin.com/in/euwan-abogadie">Contact Euwan</button>
+            </div>
         </div>
     </div>
 
