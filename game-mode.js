@@ -1,5 +1,7 @@
 function showGameModeGUI() {
     const gameGUI = document.getElementById('gameModeGUI');
+    const bgVideo = document.querySelector('.game-mode-bg-video');
+    if (bgVideo) loadLazyVideo(bgVideo, true);
     if (gameGUI) {
         requestAnimationFrame(() => {
             gameGUI.style.display = 'block';
@@ -7,6 +9,7 @@ function showGameModeGUI() {
             requestAnimationFrame(() => {
                 gameGUI.style.opacity = '1';
                 gameGUI.classList.add('active');
+                if (bgVideo) bgVideo.play().catch(() => {});
             });
         });
     }
@@ -14,6 +17,7 @@ function showGameModeGUI() {
 
 function exitGameMode() {
     const gameGUI = document.getElementById('gameModeGUI');
+    const bgVideo = document.querySelector('.game-mode-bg-video');
     if (gameGUI) {
         gameGUI.classList.remove('active');
         gameGUI.style.opacity = '0';
@@ -29,6 +33,10 @@ function exitGameMode() {
     const videoContainer = document.getElementById('gameModeVideo');
     if (videoContainer) {
         videoContainer.classList.remove('active');
+    }
+    if (bgVideo) {
+        bgVideo.pause();
+        bgVideo.currentTime = 0;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -275,5 +283,33 @@ function updateGameStats() {
 document.addEventListener('DOMContentLoaded', () => {
     setupGameModeTabs();
     updateGameStats();
+    initLazyVideos();
 });
+
+function initLazyVideos() {
+    const videos = [
+        document.getElementById('gameModeVideoPlayer'),
+        document.querySelector('.game-mode-bg-video')
+    ].filter(Boolean);
+    videos.forEach(v => {
+        v.autoplay = false;
+        v.preload = 'none';
+        const source = v.querySelector('source');
+        if (source && source.src) {
+            source.dataset.src = source.src;
+            source.src = '';
+        }
+        v.load();
+    });
+}
+
+function loadLazyVideo(video, autoplay) {
+    if (!video) return;
+    const source = video.querySelector('source');
+    if (source && !source.src && source.dataset.src) {
+        source.src = source.dataset.src;
+        video.load();
+    }
+    if (autoplay) video.play().catch(() => {});
+}
 
