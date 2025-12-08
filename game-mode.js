@@ -128,15 +128,6 @@ function createOthersPanel() {
                 'Basketball Demon (101k views)',
                 'My Idiot Teammate (unreleased)'
             ]
-        },
-        {
-            title: 'Profile',
-            items: [
-                'Euwan Gabriel B. Abogadie',
-                'Favorite genres: romance, action, fanfic, sci-fi, horror, mystery, demon, angels, powerful MC',
-                'Platforms: mobile, PC, laptop, PS4, PS5, PSP, Game Boy, joystick, computer, Nintendo',
-                'Favorite characters: Sung Jin Woo, Gojo Satoru'
-            ]
         }
     ];
 
@@ -262,4 +253,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bgVideo) {
         loadLazyVideo(bgVideo, true);
     }
+
+    // Light jitter for ping/fps to look alive
+    const pingEl = document.getElementById('metricPing');
+    const fpsEl = document.getElementById('metricFps');
+    const chipPing = document.getElementById('chipPing');
+    const chipFps = document.getElementById('chipFps');
+    let basePing = 18;
+    let baseFps = 144;
+    setInterval(() => {
+        const jitterPing = Math.max(12, basePing + (Math.random() * 6 - 3));
+        const jitterFps = Math.max(100, baseFps + (Math.random() * 16 - 8));
+        const pingText = `${jitterPing.toFixed(0)} ms`;
+        const fpsText = `${jitterFps.toFixed(0)} FPS`;
+        if (pingEl) pingEl.textContent = pingText;
+        if (chipPing) chipPing.textContent = pingText;
+        if (fpsEl) fpsEl.textContent = fpsText;
+        if (chipFps) chipFps.textContent = fpsText;
+    }, 1400);
 });
