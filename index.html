@@ -952,36 +952,30 @@
 
     <div class="ai-assistant minimized" id="aiAssistant">
         <div class="ai-assistant-header" id="aiDragHandle">
-            <div class="ai-status-dot"></div>
-            <div class="ai-title">AI Assistant</div>
+            <div class="ai-logo"><i class="fas fa-robot"></i></div>
+            <div class="ai-title">Assistant</div>
             <button class="ai-toggle" id="aiToggle" aria-label="Toggle assistant">▲</button>
         </div>
         <div class="ai-assistant-body">
             <div class="ai-messages" id="aiMessages">
-                <div class="ai-message ai-bot">Hi! Choose a topic to start.</div>
+                <div class="ai-message ai-bot">Hi! Pick a question to start.</div>
             </div>
-            <div class="ai-categories">
-                <button class="ai-category" data-group="about">About</button>
-                <button class="ai-category" data-group="site">This Site</button>
-                <button class="ai-category" data-group="contact">Contact</button>
-                <button class="ai-category" data-group="projects">Projects</button>
+            <div class="ai-initial">
+                <button class="ai-btn initial" data-question="Who are you?" data-answer="I'm a helpful assistant in Euwan's portfolio." data-subgroup="about">Who are you?</button>
+                <button class="ai-btn initial" data-question="What is this site?" data-answer="This is Euwan Gabriel B. Abogadie's portfolio, showcasing his work and skills." data-subgroup="site">What is this site?</button>
+                <button class="ai-btn initial" data-question="Contacts" data-answer="Email: egAbogadie@mcm.edu.ph | GitHub: github.com/euwan123 | LinkedIn: linkedin.com/in/euwan-abogadie" data-subgroup="contact">Contacts</button>
             </div>
             <div class="ai-buttons-group" data-group="about">
-                <button class="ai-btn" data-question="Who are you?" data-answer="I'm a friendly assistant built into Euwan's portfolio.">Who are you?</button>
-                <button class="ai-btn" data-question="What can you do?" data-answer="I can guide you around the portfolio and highlight Euwan's skills and projects.">What can you do?</button>
+                <button class="ai-btn sub" data-question="What can you do?" data-answer="I can guide you through Euwan's skills, projects, and how to reach him.">What can you do?</button>
+                <button class="ai-btn sub" data-question="Highlight a project" data-answer="Check out Bounceback Basketball Simulator, Smart or Broke, and Daily Schedule Parser.">Highlight a project</button>
             </div>
             <div class="ai-buttons-group" data-group="site">
-                <button class="ai-btn" data-question="Who coded this site?" data-answer="This site was coded by Euwan Gabriel B. Abogadie.">Who coded this site?</button>
-                <button class="ai-btn" data-question="Which tech stack is used?" data-answer="HTML, CSS, JavaScript plus custom animations and media.">Which tech stack is used?</button>
+                <button class="ai-btn sub" data-question="Who coded this site?" data-answer="Euwan Gabriel B. Abogadie coded this site end-to-end.">Who coded this site?</button>
+                <button class="ai-btn sub" data-question="Tech stack?" data-answer="HTML, CSS, JavaScript with custom animations and media.">Tech stack?</button>
             </div>
             <div class="ai-buttons-group" data-group="contact">
-                <button class="ai-btn" data-question="How to contact Euwan?" data-answer="Email: egAbogadie@mcm.edu.ph | GitHub: github.com/euwan123 | LinkedIn: linkedin.com/in/euwan-abogadie">Contact info</button>
-                <button class="ai-btn" data-question="Where is Euwan located?" data-answer="Matina Aplaya, Davao City, Philippines.">Location</button>
-            </div>
-            <div class="ai-buttons-group" data-group="projects">
-                <button class="ai-btn" data-question="Show featured projects" data-answer="StrokeSense, PlanIT, Portfolio, Bounceback Basketball Simulator, Smart or Broke Simulator, Daily Schedule Parser.">Featured projects</button>
-                <button class="ai-btn" data-question="What is Bounceback?" data-answer="A Java basketball management simulator with trades, team building, and finances.">What is Bounceback?</button>
-                <button class="ai-btn" data-question="What is Smart or Broke?" data-answer="A Java money management game teaching budgeting choices.">What is Smart or Broke?</button>
+                <button class="ai-btn sub" data-question="Email?" data-answer="egAbogadie@mcm.edu.ph">Email?</button>
+                <button class="ai-btn sub" data-question="Socials?" data-answer="GitHub: github.com/euwan123 | LinkedIn: linkedin.com/in/euwan-abogadie">Socials?</button>
             </div>
             <div class="ai-typing" id="aiTyping">
                 <span class="dot"></span><span class="dot"></span><span class="dot"></span>
@@ -990,10 +984,6 @@
     </div>
 
     <footer>
-        <div class="footer-content">
-            <p><i class="far fa-copyright"></i> 2024 Euwan Gabriel B. Abogadie | Mapúa Malayan Colleges Mindanao</p>
-            <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
-        </div>
         <div class="footer-video-wrapper">
             <div class="footer-video-frame">
                 <video class="footer-video" autoplay muted loop playsinline>
@@ -1001,9 +991,14 @@
                 </video>
             </div>
             <div class="motto-wrapper">
+                <button class="motto-arrow" id="mottoPrev" aria-label="Previous motto"><i class="fas fa-chevron-left"></i></button>
                 <div class="motto-text" id="mottoText">Code, test, learn, repeat.</div>
-                <button class="motto-btn" id="mottoBtn">Next motto</button>
+                <button class="motto-arrow" id="mottoNext" aria-label="Next motto"><i class="fas fa-chevron-right"></i></button>
             </div>
+        </div>
+        <div class="footer-content">
+            <p><i class="far fa-copyright"></i> 2024 Euwan Gabriel B. Abogadie | Mapúa Malayan Colleges Mindanao</p>
+            <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
         </div>
     </footer>
 
