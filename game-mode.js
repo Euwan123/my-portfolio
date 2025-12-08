@@ -1,74 +1,6 @@
-function showGameModeGUI() {
-    const gameGUI = document.getElementById('gameModeGUI');
-    const bgVideo = document.querySelector('.game-mode-bg-video');
-    if (bgVideo) loadLazyVideo(bgVideo, true);
-    if (gameGUI) {
-        requestAnimationFrame(() => {
-            gameGUI.style.display = 'block';
-            gameGUI.offsetHeight;
-            requestAnimationFrame(() => {
-                gameGUI.style.opacity = '1';
-                gameGUI.classList.add('active');
-                if (bgVideo) bgVideo.play().catch(() => {});
-            });
-        });
-    }
-}
-
 function exitGameMode() {
-    const gameGUI = document.getElementById('gameModeGUI');
-    const bgVideo = document.querySelector('.game-mode-bg-video');
-    if (gameGUI) {
-        gameGUI.classList.remove('active');
-        gameGUI.style.opacity = '0';
-        setTimeout(() => {
-            gameGUI.style.display = 'none';
-        }, 300);
-    }
-    const video = document.getElementById('gameModeVideoPlayer');
-    if (video) {
-        video.pause();
-        video.currentTime = 0;
-    }
-    const videoContainer = document.getElementById('gameModeVideo');
-    if (videoContainer) {
-        videoContainer.classList.remove('active');
-    }
-    if (bgVideo) {
-        bgVideo.pause();
-        bgVideo.currentTime = 0;
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.href = 'index.html';
 }
-
-function skipGameModeVideo() {
-    const videoContainer = document.getElementById('gameModeVideo');
-    const video = document.getElementById('gameModeVideoPlayer');
-    
-    if (videoContainer && video) {
-        video.pause();
-        videoContainer.classList.remove('active');
-        showGameModeGUI();
-    }
-}
-
-function backFromGameModeVideo() {
-    const videoContainer = document.getElementById('gameModeVideo');
-    const video = document.getElementById('gameModeVideoPlayer');
-    
-    if (videoContainer && video) {
-        video.pause();
-        video.currentTime = 0;
-        videoContainer.classList.remove('active');
-    }
-}
-
-document.addEventListener('keydown', (e) => {
-    const gameGUI = document.getElementById('gameModeGUI');
-    if (gameGUI && gameGUI.classList.contains('active') && e.key === 'Escape') {
-        exitGameMode();
-    }
-});
 
 function setupGameModeTabs() {
     const stats = document.querySelector('.stats-container');
@@ -280,20 +212,11 @@ function updateGameStats() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    setupGameModeTabs();
-    updateGameStats();
-    initLazyVideos();
-});
-
 function initLazyVideos() {
-    const videos = [
-        document.getElementById('gameModeVideoPlayer'),
-        document.querySelector('.game-mode-bg-video')
-    ].filter(Boolean);
+    const videos = [document.querySelector('.game-mode-bg-video')].filter(Boolean);
     videos.forEach(v => {
         v.autoplay = false;
-        v.preload = 'none';
+        v.preload = 'metadata';
         const source = v.querySelector('source');
         if (source && source.src) {
             source.dataset.src = source.src;
@@ -312,4 +235,15 @@ function loadLazyVideo(video, autoplay) {
     }
     if (autoplay) video.play().catch(() => {});
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupGameModeTabs();
+    updateGameStats();
+    initLazyVideos();
+
+    const bgVideo = document.querySelector('.game-mode-bg-video');
+    if (bgVideo) {
+        loadLazyVideo(bgVideo, true);
+    }
+});
 
