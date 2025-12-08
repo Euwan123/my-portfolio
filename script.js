@@ -17,63 +17,53 @@ function scrollToTop() {
 
 function showGameModeWarning() {
     const modal = document.getElementById('gameModeWarning');
+    if (!modal) return;
     modal.classList.add('active');
     const lightning = modal.querySelector('.lightning-effect');
-    lightning.style.animation = 'none';
-    setTimeout(() => {
-        lightning.style.animation = 'lightning 0.5s ease-in-out';
-    }, 10);
+    if (lightning) {
+        lightning.style.animation = 'none';
+        setTimeout(() => {
+            lightning.style.animation = 'lightning 0.5s ease-in-out';
+        }, 10);
+    }
 }
 
 function closeGameModeWarning() {
     const modal = document.getElementById('gameModeWarning');
-    modal.classList.remove('active');
+    if (modal) modal.classList.remove('active');
 }
 
 function playGameModeVideo() {
     closeGameModeWarning();
     const videoContainer = document.getElementById('gameModeVideo');
     const video = document.getElementById('gameModeVideoPlayer');
-    const gameGUI = document.getElementById('gameModeGUI');
-    
-    if (!videoContainer || !video || !gameGUI) return;
-    
+
+    if (!videoContainer || !video) {
+        window.location.href = 'game-mode.html';
+        return;
+    }
+
     videoContainer.classList.add('active');
     video.currentTime = 0;
-    video.play();
-    
-    let guiStarted = false;
-    
-    const handleTimeUpdate = function() {
-        const currentTime = video.currentTime;
-        const videoDuration = video.duration || 16;
-        const fadeStartTime = videoDuration - 2;
-        
-        if (currentTime >= fadeStartTime && !guiStarted) {
-            guiStarted = true;
-            gameGUI.style.display = 'block';
-            gameGUI.style.opacity = '0';
-            gameGUI.style.transition = 'opacity 2s ease-in-out';
-            
-            requestAnimationFrame(() => {
-                gameGUI.style.opacity = '1';
-            });
-        }
-        
-        if (currentTime >= videoDuration - 0.1) {
-            videoContainer.classList.remove('active');
-            video.pause();
-            gameGUI.classList.add('active');
-            video.removeEventListener('timeupdate', handleTimeUpdate);
-        }
-    };
-    
-    video.addEventListener('timeupdate', handleTimeUpdate, { passive: true });
-    
-    video.addEventListener('ended', function() {
+    video.play().catch(() => {
+        // If autoplay fails, navigate immediately.
+        window.location.href = 'game-mode.html';
+    });
+
+    const finish = () => {
         videoContainer.classList.remove('active');
-        gameGUI.classList.add('active');
-    }, { once: true });
+        window.location.href = 'game-mode.html';
+    };
+
+    video.addEventListener('ended', finish, { once: true });
+    video.addEventListener(
+        'timeupdate',
+        () => {
+            const duration = video.duration || 8;
+            if (video.currentTime >= duration - 0.2) finish();
+        },
+        { passive: true }
+    );
 }
 
 function skipLoadingVideo() {
@@ -119,30 +109,20 @@ function closeImageModal() {
     }
 }
 
-function initLazyVideos() {
-    const lazyVideos = document.querySelectorAll('video.lazy-video');
-    if (!lazyVideos.length) return;
-    const loadVideo = (video) => {
-        const source = video.querySelector('source');
-        const dataSrc = source ? source.getAttribute('data-src') : null;
-        if (dataSrc && !source.src) {
-            source.src = dataSrc;
-        }
-        const directSrc = video.getAttribute('data-video-src');
-        if (directSrc && !video.src) {
-            video.src = directSrc;
-        }
-        video.load();
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                loadVideo(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '200px 0px', threshold: 0.1 });
-    lazyVideos.forEach(video => observer.observe(video));
+function skipGameModeVideo() {
+    window.location.href = 'game-mode.html';
+}
+
+function backFromGameModeVideo() {
+    const videoContainer = document.getElementById('gameModeVideo');
+    const video = document.getElementById('gameModeVideoPlayer');
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+    if (videoContainer) {
+        videoContainer.classList.remove('active');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -481,6 +461,4 @@ document.addEventListener('DOMContentLoaded', () => {
             setMotto(mottoIndex);
         });
     }
-
-    initLazyVideos();
 });
