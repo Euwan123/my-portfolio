@@ -307,7 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const aiButtons = document.querySelectorAll('.ai-btn');
+    const aiButtons = document.querySelectorAll('.ai-btn.sub');
+    const aiInitialButtons = document.querySelectorAll('.ai-btn.initial');
     const aiMessages = document.getElementById('aiMessages');
     const aiTyping = document.getElementById('aiTyping');
     const aiAssistant = document.getElementById('aiAssistant');
@@ -315,6 +316,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const aiCategories = document.querySelectorAll('.ai-category');
     const aiGroups = document.querySelectorAll('.ai-buttons-group');
     const dragHandle = document.getElementById('aiDragHandle');
+    const mottoText = document.getElementById('mottoText');
+    const mottoPrev = document.getElementById('mottoPrev');
+    const mottoNext = document.getElementById('mottoNext');
 
     function appendMessage(text, type) {
         if (!aiMessages) return;
@@ -341,6 +345,23 @@ document.addEventListener('DOMContentLoaded', () => {
             cat.addEventListener('click', () => handleCategory(cat.dataset.group));
         });
     }
+
+    aiInitialButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const question = btn.getAttribute('data-question') || '';
+            const answer = btn.getAttribute('data-answer') || '';
+            const subgroup = btn.getAttribute('data-subgroup') || '';
+            appendMessage(question, 'ai-user');
+            showTyping(true);
+            setTimeout(() => {
+                showTyping(false);
+                appendMessage(answer, 'ai-bot');
+                if (subgroup) {
+                    handleCategory(subgroup);
+                }
+            }, 600);
+        });
+    });
 
     aiButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -411,16 +432,27 @@ document.addEventListener('DOMContentLoaded', () => {
         'Build boldly, refactor wisely.',
         'Ship fast, polish faster.',
         'Debug the bug, learn the lesson.',
-        'Design with empathy, code with intent.'
+        'Design with empathy, code with intent.',
+        'Motto: stay curious.',
+        'Motto: craft, ship, iterate.',
+        'Motto: clean code, clear mind.'
     ];
-    const mottoText = document.getElementById('mottoText');
-    const mottoBtn = document.getElementById('mottoBtn');
     let mottoIndex = 0;
 
-    if (mottoText && mottoBtn) {
-        mottoBtn.addEventListener('click', () => {
+    function setMotto(idx) {
+        if (!mottoText) return;
+        mottoText.textContent = mottos[idx];
+    }
+
+    if (mottoPrev && mottoNext && mottoText) {
+        setMotto(mottoIndex);
+        mottoPrev.addEventListener('click', () => {
+            mottoIndex = (mottoIndex - 1 + mottos.length) % mottos.length;
+            setMotto(mottoIndex);
+        });
+        mottoNext.addEventListener('click', () => {
             mottoIndex = (mottoIndex + 1) % mottos.length;
-            mottoText.textContent = mottos[mottoIndex];
+            setMotto(mottoIndex);
         });
     }
 });
