@@ -18,20 +18,28 @@
     <div id="gameModeGUI" class="game-mode-gui active">
         <div class="game-mode-content">
             <h1 class="game-mode-name">Euwan Gabriel B. Abogadie</h1>
-            <div class="profile-header">
+            <div class="profile-hero">
+                <div class="profile-photo">
+                    <img src="profile.jpg" alt="Euwan Gabriel B. Abogadie" onerror="this.src='https://via.placeholder.com/180/4CAF50/ffffff?text=EGA'">
+                </div>
                 <div class="profile-main">
                     <div class="profile-title">Profile</div>
                     <div class="profile-role">Software Developer & Tech Enthusiast</div>
                     <div class="profile-meta">Mapúa Malayan Colleges Mindanao | A221</div>
+                    <div class="profile-details">
+                        <div class="detail-line"><strong>Favorite genres:</strong> romance, action, fanfic, sci-fi, horror, mystery, demon, angels, powerful MC</div>
+                        <div class="detail-line"><strong>Platforms:</strong> mobile, PC, laptop, PS4, PS5, PSP, Game Boy, joystick, computer, Nintendo</div>
+                        <div class="detail-line"><strong>Favorite characters:</strong> Sung Jin Woo, Gojo Satoru</div>
+                    </div>
                 </div>
                 <div class="profile-metrics">
                     <div class="metric-card">
                         <span class="metric-label">Avg Ping</span>
-                        <span class="metric-value">18 ms</span>
+                        <span class="metric-value" id="metricPing">18 ms</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-label">Avg FPS</span>
-                        <span class="metric-value">144</span>
+                        <span class="metric-value" id="metricFps">144</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-label">Avg Playtime</span>
@@ -40,46 +48,50 @@
                 </div>
             </div>
             <div class="gm-info-bar">
-                <div class="gm-chip online"><i class="fas fa-signal"></i> Ping 18ms</div>
-                <div class="gm-chip optimal"><i class="fas fa-tv"></i> FPS 144</div>
+                <div class="gm-chip online"><i class="fas fa-signal"></i> <span id="chipPing">18 ms</span></div>
+                <div class="gm-chip optimal"><i class="fas fa-tv"></i> <span id="chipFps">144 FPS</span></div>
                 <div class="gm-chip secure"><i class="fas fa-shield-alt"></i> Shielded</div>
                 <div class="gm-chip stable"><i class="fas fa-wifi"></i> Link Stable</div>
             </div>
             <div class="stats-container">
-                <div class="solo-stats">
-                    <div class="stat-row">
-                        <span class="stat-label">Health</span>
-                        <span class="stat-value">1/10000</span>
+                <div class="stat-pair">
+                    <div class="stat-tile danger">
+                        <div class="stat-label">Health</div>
+                        <div class="stat-value">1 / 10000</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Defense</span>
-                        <span class="stat-value">2/5000</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Attack</span>
-                        <span class="stat-value">-1/10000</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Intelligence</span>
-                        <span class="stat-value">10000/10000</span>
+                    <div class="stat-tile danger">
+                        <div class="stat-label">Money</div>
+                        <div class="stat-value">In debt</div>
                     </div>
                 </div>
-                <div class="secondary-stats">
-                    <div class="stat-row">
-                        <span class="stat-label">Money</span>
-                        <span class="stat-value">0</span>
+                <div class="stat-pair">
+                    <div class="stat-tile warning">
+                        <div class="stat-label">Defense</div>
+                        <div class="stat-value">2 / 5000</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Energy</span>
-                        <span class="stat-value">0</span>
+                    <div class="stat-tile neutral">
+                        <div class="stat-label">Energy</div>
+                        <div class="stat-value">0</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Motivation</span>
-                        <span class="stat-value">0</span>
+                </div>
+                <div class="stat-pair">
+                    <div class="stat-tile warning">
+                        <div class="stat-label">Attack</div>
+                        <div class="stat-value">-1 / 10000</div>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Strength</span>
-                        <span class="stat-value">0</span>
+                    <div class="stat-tile neutral">
+                        <div class="stat-label">Motivation</div>
+                        <div class="stat-value">0</div>
+                    </div>
+                </div>
+                <div class="stat-pair">
+                    <div class="stat-tile success">
+                        <div class="stat-label">Intelligence</div>
+                        <div class="stat-value">10000 / 10000</div>
+                    </div>
+                    <div class="stat-tile neutral">
+                        <div class="stat-label">Strength</div>
+                        <div class="stat-value">0</div>
                     </div>
                 </div>
             </div>
@@ -400,17 +412,6 @@
                         </div>
                         <div class="quest-bar success"><span style="width:100%"></span></div>
                     </div>
-                </div>
-            </div>
-            <div class="gm-keybinds">
-                <h2 class="features-title">Keybinds</h2>
-                <div class="keybinds-grid">
-                    <div class="keybind-card"><span class="keybind-key">Q</span><span class="keybind-desc">Dash / Blink</span></div>
-                    <div class="keybind-card"><span class="keybind-key">E</span><span class="keybind-desc">Barrier Field</span></div>
-                    <div class="keybind-card"><span class="keybind-key">R</span><span class="keybind-desc">Ultimate: Eclipse</span></div>
-                    <div class="keybind-card"><span class="keybind-key">F</span><span class="keybind-desc">Interact / Use</span></div>
-                    <div class="keybind-card"><span class="keybind-key">Z</span><span class="keybind-desc">Deploy Drone</span></div>
-                    <div class="keybind-card"><span class="keybind-key">X</span><span class="keybind-desc">Ping / Mark</span></div>
                 </div>
             </div>
             <div class="anime-section">
