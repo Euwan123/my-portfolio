@@ -245,7 +245,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
                     <div class="project-image-frame">
-                        <img src="StrokeSense.png" alt="StrokeSense preview" class="project-img" data-large="StrokeSense.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=StrokeSense'">
+                        <img src="Images/StrokeSense.png" alt="StrokeSense preview" class="project-img" data-large="Images/StrokeSense.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=StrokeSense'">
                     </div>
                     <a href="https://euwan123.github.io/strokesense-landing-page/" target="_blank" class="project-button">
                         <i class="fas fa-external-link-alt"></i> View Live Website
@@ -269,7 +269,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> C#, Windows Forms, Visual Studio 2022</p>
                     <div class="project-image-frame">
-                        <img src="PlanIT.png" alt="PlanIT preview" class="project-img" data-large="PlanIT.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=PlanIT'">
+                        <img src="Images/PlanIT.png" alt="PlanIT preview" class="project-img" data-large="Images/PlanIT.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=PlanIT'">
                     </div>
                     <a href="https://github.com/Euwan123/Group-7-System-PlanIT" target="_blank" class="project-button">
                         <i class="fab fa-github"></i> View Repository
@@ -293,7 +293,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
                     <div class="project-image-frame">
-                        <img src="portfolio-preview.png" alt="Portfolio preview" class="project-img" data-large="portfolio-preview.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Portfolio'">
+                        <img src="Images/portfolio-preview.png" alt="Portfolio preview" class="project-img" data-large="Images/portfolio-preview.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Portfolio'">
                     </div>
                     <a href="https://github.com/Euwan123/my-portfolio" target="_blank" class="project-button">
                         <i class="fab fa-github"></i> View Repository
@@ -316,7 +316,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
                     <div class="project-image-frame">
-                        <img src="bounceback.png" alt="Bounceback Basketball Simulator preview" class="project-img" data-large="bounceback.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Bounceback'">
+                        <img src="Images/bounceback.png" alt="Bounceback Basketball Simulator preview" class="project-img" data-large="Images/bounceback.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Bounceback'">
                     </div>
                 </div>
             </div>
@@ -336,7 +336,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
                     <div class="project-image-frame">
-                        <img src="Smart or Broke Simulator.png" alt="Smart or Broke Simulator preview" class="project-img" data-large="Smart or Broke Simulator.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Smart+or+Broke'">
+                        <img src="Images/Smart or Broke Simulator.png" alt="Smart or Broke Simulator preview" class="project-img" data-large="Images/Smart or Broke Simulator.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Smart+or+Broke'">
                     </div>
                 </div>
             </div>
@@ -356,7 +356,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
                     <div class="project-image-frame">
-                        <img src="Daily Schedule Parser.png" alt="Daily Schedule Parser preview" class="project-img" data-large="Daily Schedule Parser.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Schedule+Parser'">
+                        <img src="Images/Daily Schedule Parser.png" alt="Daily Schedule Parser preview" class="project-img" data-large="Images/Daily Schedule Parser.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Schedule+Parser'">
                     </div>
                 </div>
             </div>
@@ -950,20 +950,41 @@
         </div>
     </div>
 
-    <div class="ai-assistant" id="aiAssistant">
-        <div class="ai-assistant-header">
+    <div class="ai-assistant minimized" id="aiAssistant">
+        <div class="ai-assistant-header" id="aiDragHandle">
             <div class="ai-status-dot"></div>
             <div class="ai-title">AI Assistant</div>
+            <button class="ai-toggle" id="aiToggle" aria-label="Toggle assistant">▲</button>
         </div>
         <div class="ai-assistant-body">
             <div class="ai-messages" id="aiMessages">
-                <div class="ai-message ai-bot">Hi! Choose a question below.</div>
+                <div class="ai-message ai-bot">Hi! Choose a topic to start.</div>
             </div>
-            <div class="ai-buttons">
+            <div class="ai-categories">
+                <button class="ai-category" data-group="about">About</button>
+                <button class="ai-category" data-group="site">This Site</button>
+                <button class="ai-category" data-group="contact">Contact</button>
+                <button class="ai-category" data-group="projects">Projects</button>
+            </div>
+            <div class="ai-buttons-group" data-group="about">
                 <button class="ai-btn" data-question="Who are you?" data-answer="I'm a friendly assistant built into Euwan's portfolio.">Who are you?</button>
+                <button class="ai-btn" data-question="What can you do?" data-answer="I can guide you around the portfolio and highlight Euwan's skills and projects.">What can you do?</button>
+            </div>
+            <div class="ai-buttons-group" data-group="site">
                 <button class="ai-btn" data-question="Who coded this site?" data-answer="This site was coded by Euwan Gabriel B. Abogadie.">Who coded this site?</button>
-                <button class="ai-btn" data-question="What can you do?" data-answer="I can guide you around the portfolio and highlight Euwan's projects and skills.">What can you do?</button>
-                <button class="ai-btn" data-question="How to contact Euwan?" data-answer="Email: egAbogadie@mcm.edu.ph | GitHub: github.com/euwan123 | LinkedIn: linkedin.com/in/euwan-abogadie">Contact Euwan</button>
+                <button class="ai-btn" data-question="Which tech stack is used?" data-answer="HTML, CSS, JavaScript plus custom animations and media.">Which tech stack is used?</button>
+            </div>
+            <div class="ai-buttons-group" data-group="contact">
+                <button class="ai-btn" data-question="How to contact Euwan?" data-answer="Email: egAbogadie@mcm.edu.ph | GitHub: github.com/euwan123 | LinkedIn: linkedin.com/in/euwan-abogadie">Contact info</button>
+                <button class="ai-btn" data-question="Where is Euwan located?" data-answer="Matina Aplaya, Davao City, Philippines.">Location</button>
+            </div>
+            <div class="ai-buttons-group" data-group="projects">
+                <button class="ai-btn" data-question="Show featured projects" data-answer="StrokeSense, PlanIT, Portfolio, Bounceback Basketball Simulator, Smart or Broke Simulator, Daily Schedule Parser.">Featured projects</button>
+                <button class="ai-btn" data-question="What is Bounceback?" data-answer="A Java basketball management simulator with trades, team building, and finances.">What is Bounceback?</button>
+                <button class="ai-btn" data-question="What is Smart or Broke?" data-answer="A Java money management game teaching budgeting choices.">What is Smart or Broke?</button>
+            </div>
+            <div class="ai-typing" id="aiTyping">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
             </div>
         </div>
     </div>
@@ -972,6 +993,17 @@
         <div class="footer-content">
             <p><i class="far fa-copyright"></i> 2024 Euwan Gabriel B. Abogadie | Mapúa Malayan Colleges Mindanao</p>
             <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+        </div>
+        <div class="footer-video-wrapper">
+            <div class="footer-video-frame">
+                <video class="footer-video" autoplay muted loop playsinline>
+                    <source src="THIS IS 4K ANIME   YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="motto-wrapper">
+                <div class="motto-text" id="mottoText">Code, test, learn, repeat.</div>
+                <button class="motto-btn" id="mottoBtn">Next motto</button>
+            </div>
         </div>
     </footer>
 
