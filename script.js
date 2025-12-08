@@ -101,6 +101,24 @@ function skipLoadingVideo() {
     }
 }
 
+function openImageModal(src) {
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    if (imageModal && modalImage) {
+        modalImage.src = src;
+        imageModal.classList.add('active');
+    }
+}
+
+function closeImageModal() {
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    if (imageModal && modalImage) {
+        imageModal.classList.remove('active');
+        modalImage.src = '';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.getElementById('loading-screen');
     const loadingVideo = document.getElementById('loading-video');
@@ -268,5 +286,45 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === this) {
             closeGameModeWarning();
         }
+    });
+
+    const projectImages = document.querySelectorAll('.project-img');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+
+    if (projectImages.length && imageModal && modalImage) {
+        projectImages.forEach(img => {
+            img.addEventListener('click', () => {
+                const source = img.getAttribute('data-large') || img.src;
+                openImageModal(source);
+            });
+        });
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                closeImageModal();
+            }
+        });
+    }
+
+    const aiButtons = document.querySelectorAll('.ai-btn');
+    const aiMessages = document.getElementById('aiMessages');
+
+    function appendMessage(text, type) {
+        if (!aiMessages) return;
+        const bubble = document.createElement('div');
+        bubble.className = `ai-message ${type}`;
+        bubble.textContent = text;
+        aiMessages.appendChild(bubble);
+        aiMessages.scrollTop = aiMessages.scrollHeight;
+    }
+
+    aiButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const question = btn.getAttribute('data-question') || '';
+            const answer = btn.getAttribute('data-answer') || '';
+            appendMessage(question, 'ai-user');
+            appendMessage(answer, 'ai-bot');
+        });
     });
 });
