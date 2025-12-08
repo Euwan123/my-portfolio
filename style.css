@@ -1013,6 +1013,12 @@ body.dark-mode .about-text-wrapper {
     overflow: hidden;
 }
 
+.stat-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary-color);
+    box-shadow: 0 14px 30px rgba(239, 83, 80, 0.35);
+}
+
 .stat-card i {
     font-size: 2.5rem;
     color: var(--primary-color);
@@ -1047,8 +1053,9 @@ body.dark-mode .about-text-wrapper {
 }
 
 .skill:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     border-color: var(--primary-color);
+    box-shadow: 0 12px 28px rgba(239, 83, 80, 0.3);
 }
 
 .skill-header {
@@ -1176,7 +1183,7 @@ body.dark-mode .skill-bar {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
     margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     position: relative;
     z-index: 1;
 }
@@ -1404,6 +1411,12 @@ body.dark-mode .project-date {
     position: relative;
     overflow: hidden;
     box-shadow: none;
+}
+
+.achievement-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(239, 83, 80, 0.35);
 }
 
 .achievement-icon {
@@ -2019,7 +2032,7 @@ body.dark-mode .quick-link-btn:hover {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    width: 320px;
+    width: 380px;
     max-width: 90vw;
     background: var(--bg-section-light);
     border: 1px solid rgba(239, 83, 80, 0.3);
@@ -2283,6 +2296,7 @@ body.dark-mode footer {
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 1.5rem;
 }
 
 .footer-tagline {
@@ -2297,7 +2311,7 @@ body.dark-mode footer {
 
 .footer-video-wrapper {
     margin: 2rem auto 0;
-    max-width: 1100px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -2306,11 +2320,12 @@ body.dark-mode footer {
 
 .footer-video-frame {
     width: 100%;
-    min-height: 360px;
+    min-height: 420px;
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 0 30px rgba(239, 83, 80, 0.35), 0 0 50px rgba(198, 40, 40, 0.25);
     border: 2px solid rgba(239, 83, 80, 0.4);
+    position: relative;
 }
 
 .footer-video {
@@ -2318,6 +2333,32 @@ body.dark-mode footer {
     height: 100%;
     display: block;
     object-fit: cover;
+}
+
+.footer-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.footer-overlay-content {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    color: #fff;
+}
+
+.footer-thanks {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.6;
 }
 
 .motto-wrapper {
