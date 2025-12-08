@@ -1,9 +1,14 @@
 function showGameModeGUI() {
     const gameGUI = document.getElementById('gameModeGUI');
     if (gameGUI) {
-        gameGUI.style.display = 'block';
-        gameGUI.style.opacity = '1';
-        gameGUI.classList.add('active');
+        requestAnimationFrame(() => {
+            gameGUI.style.display = 'block';
+            gameGUI.offsetHeight;
+            requestAnimationFrame(() => {
+                gameGUI.style.opacity = '1';
+                gameGUI.classList.add('active');
+            });
+        });
     }
 }
 
@@ -11,8 +16,10 @@ function exitGameMode() {
     const gameGUI = document.getElementById('gameModeGUI');
     if (gameGUI) {
         gameGUI.classList.remove('active');
-        gameGUI.style.display = 'none';
         gameGUI.style.opacity = '0';
+        setTimeout(() => {
+            gameGUI.style.display = 'none';
+        }, 300);
     }
     const video = document.getElementById('gameModeVideoPlayer');
     if (video) {
@@ -47,3 +54,11 @@ function backFromGameModeVideo() {
         videoContainer.classList.remove('active');
     }
 }
+
+document.addEventListener('keydown', (e) => {
+    const gameGUI = document.getElementById('gameModeGUI');
+    if (gameGUI && gameGUI.classList.contains('active') && e.key === 'Escape') {
+        exitGameMode();
+    }
+});
+
