@@ -102,6 +102,11 @@ function setupGameModeTabs() {
                 'Return of the Mount Hua Sect',
                 'Legend of the Northern Blade'
             ])
+        },
+        {
+            id: 'others',
+            label: 'Others',
+            node: createOthersPanel()
         }
     ];
 
@@ -140,6 +145,78 @@ function createListPanel(title, items) {
         card.appendChild(label);
         grid.appendChild(card);
     });
+    section.appendChild(heading);
+    section.appendChild(grid);
+    return section;
+}
+
+function createOthersPanel() {
+    const section = document.createElement('div');
+    section.className = 'gm-tab-panel';
+    const heading = document.createElement('h2');
+    heading.className = 'anime-section-title';
+    heading.textContent = 'Others';
+    const grid = document.createElement('div');
+    grid.className = 'others-grid';
+
+    const cards = [
+        {
+            title: 'Cosplays',
+            items: [
+                'Total: 3',
+                'Kirito (Sword Art Online)',
+                'Rengoku (Demon Slayer)',
+                'Tanjiro (Demon Slayer)'
+            ]
+        },
+        {
+            title: 'Fan Art',
+            items: [
+                'Total: 5',
+                'Draw Gojo',
+                '15 Pokémon pieces',
+                'One Punch Man characters',
+                '3D Zoro',
+                '3D Bulbasaur'
+            ]
+        },
+        {
+            title: 'Fan Fiction',
+            items: [
+                'Total: 3',
+                'Cycle of the Fallen (180k views)',
+                'Basketball Demon (101k views)',
+                'My Idiot Teammate (unreleased)'
+            ]
+        },
+        {
+            title: 'Profile',
+            items: [
+                'Euwan Gabriel B. Abogadie',
+                'Favorite genres: romance, action, fanfic, sci-fi, horror, mystery, demon, angels, powerful MC',
+                'Platforms: mobile, PC, laptop, PS4, PS5, PSP, Game Boy, joystick, computer, Nintendo',
+                'Favorite characters: Sung Jin Woo, Gojo Satoru'
+            ]
+        }
+    ];
+
+    cards.forEach(card => {
+        const item = document.createElement('div');
+        item.className = 'others-card';
+        const title = document.createElement('h3');
+        title.textContent = card.title;
+        const list = document.createElement('div');
+        list.className = 'others-list';
+        card.items.forEach(text => {
+            const row = document.createElement('div');
+            row.textContent = text;
+            list.appendChild(row);
+        });
+        item.appendChild(title);
+        item.appendChild(list);
+        grid.appendChild(item);
+    });
+
     section.appendChild(heading);
     section.appendChild(grid);
     return section;
