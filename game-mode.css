@@ -1,3 +1,13 @@
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 .game-mode-gui {
     display: none;
     position: fixed;
@@ -10,6 +20,7 @@
     overflow-x: hidden;
     opacity: 0;
     padding-right: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .game-mode-gui.active {
@@ -71,6 +82,7 @@
     background-clip: text;
     animation: nameShine 3s linear infinite;
     text-shadow: 0 0 30px rgba(239, 83, 80, 0.5);
+    will-change: background-position;
 }
 
 .game-mode-title {
@@ -110,6 +122,12 @@
     background: rgba(198, 40, 40, 0.2);
     border-radius: 10px;
     border-left: 4px solid #ef5350;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-row:focus-within {
+    outline: 2px solid #ef5350;
+    outline-offset: 2px;
 }
 
 .stat-row:last-child {
@@ -156,7 +174,9 @@
     margin-bottom: 3rem;
 }
 
-.game-card {
+.game-card,
+.anime-card,
+.feature-card {
     background: rgba(26, 10, 10, 0.7);
     border: 2px solid #c62828;
     border-radius: 20px;
@@ -168,7 +188,9 @@
     overflow: hidden;
 }
 
-.game-card::before {
+.game-card::before,
+.anime-card::before,
+.feature-card::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -178,6 +200,7 @@
     background: radial-gradient(circle, rgba(239, 83, 80, 0.1) 0%, transparent 70%);
     animation: rotateGlow 10s linear infinite;
     pointer-events: none;
+    will-change: transform;
 }
 
 @keyframes rotateGlow {
@@ -189,13 +212,23 @@
     }
 }
 
-.game-card:hover {
+.game-card:hover,
+.anime-card:hover,
+.feature-card:hover {
     transform: translateY(-10px) scale(1.02);
     border-color: #ef5350;
     box-shadow: 0 15px 50px rgba(198, 40, 40, 0.5), 0 0 30px rgba(239, 83, 80, 0.3);
 }
 
-.game-icon {
+.game-card:focus-visible,
+.anime-card:focus-visible,
+.feature-card:focus-visible {
+    outline: 3px solid #ef5350;
+    outline-offset: 3px;
+}
+
+.game-icon,
+.anime-icon {
     width: 60px;
     height: 60px;
     background: linear-gradient(135deg, #c62828, #ef5350);
@@ -210,12 +243,21 @@
     box-shadow: 0 4px 15px rgba(198, 40, 40, 0.5);
 }
 
-.game-card h3 {
+.anime-icon {
+    font-size: 1.2rem;
+}
+
+.game-card h3,
+.anime-card h3 {
     text-align: center;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
     color: #ef5350;
     font-weight: 600;
+}
+
+.anime-card h3 {
+    font-size: 1.2rem;
 }
 
 .game-stats-grid {
@@ -264,6 +306,11 @@
     backdrop-filter: blur(10px);
 }
 
+.exit-game-btn:focus-visible {
+    outline: 3px solid #ef5350;
+    outline-offset: 3px;
+}
+
 .exit-game-btn:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 12px 40px rgba(198, 40, 40, 0.5);
@@ -274,7 +321,9 @@
     margin-bottom: 2rem;
 }
 
-.anime-section-title {
+.anime-section-title,
+.features-title,
+.showcase-title {
     text-align: left;
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -293,60 +342,12 @@
 }
 
 .anime-card {
-    background: rgba(26, 10, 10, 0.7);
-    border: 2px solid #c62828;
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
     min-height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-}
-
-.anime-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(239, 83, 80, 0.1) 0%, transparent 70%);
-    animation: rotateGlow 10s linear infinite;
-    pointer-events: none;
-}
-
-.anime-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: #ef5350;
-    box-shadow: 0 15px 50px rgba(198, 40, 40, 0.5), 0 0 30px rgba(239, 83, 80, 0.3);
-}
-
-.anime-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #c62828, #ef5350);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: white;
-    margin: 0 auto 1.5rem;
-    box-shadow: 0 4px 15px rgba(198, 40, 40, 0.5);
-}
-
-.anime-card h3 {
-    font-size: 1.2rem;
-    color: #ef5350;
-    font-weight: 600;
+    text-align: center;
 }
 
 .game-mode-features {
@@ -354,14 +355,6 @@
     margin-bottom: 2rem;
 }
 
-.features-title {
-    text-align: left;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #ef5350;
-    text-shadow: 0 0 20px rgba(239, 83, 80, 0.8);
-    font-weight: 700;
-}
 
 .features-grid {
     display: grid;
@@ -371,34 +364,7 @@
 }
 
 .feature-card {
-    background: rgba(26, 10, 10, 0.7);
-    border: 2px solid #c62828;
-    border-radius: 20px;
-    padding: 2rem;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(239, 83, 80, 0.1) 0%, transparent 70%);
-    animation: rotateGlow 10s linear infinite;
-    pointer-events: none;
-}
-
-.feature-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: #ef5350;
-    box-shadow: 0 15px 50px rgba(198, 40, 40, 0.5), 0 0 30px rgba(239, 83, 80, 0.3);
 }
 
 .feature-icon {
@@ -459,14 +425,6 @@
     margin-bottom: 2rem;
 }
 
-.showcase-title {
-    text-align: left;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #ef5350;
-    text-shadow: 0 0 20px rgba(239, 83, 80, 0.8);
-    font-weight: 700;
-}
 
 .achievement-list {
     display: grid;
@@ -492,6 +450,11 @@
     transform: translateX(10px);
     border-color: #ef5350;
     box-shadow: 0 12px 40px rgba(198, 40, 40, 0.5);
+}
+
+.achievement-item:focus-visible {
+    outline: 3px solid #ef5350;
+    outline-offset: 3px;
 }
 
 .achievement-item i {
@@ -525,6 +488,12 @@
     min-width: 70px;
 }
 
+.skip-video-btn:focus-visible,
+.back-video-btn:focus-visible {
+    outline: 3px solid #ef5350;
+    outline-offset: 3px;
+}
+
 .skip-video-btn {
     top: 20px;
     right: 20px;
@@ -540,6 +509,11 @@
     background: rgba(198, 40, 40, 0.9);
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(198, 40, 40, 0.5);
+}
+
+.skip-video-btn:active,
+.back-video-btn:active {
+    transform: scale(0.95);
 }
 
 @media (max-width: 992px) {
