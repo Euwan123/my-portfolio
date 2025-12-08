@@ -40,7 +40,11 @@ function playGameModeVideo() {
     
     videoContainer.classList.add('active');
     video.currentTime = 0;
-    video.play();
+    
+    video.play().catch(err => {
+        console.warn('Video play failed:', err);
+        skipGameModeVideo();
+    });
     
     let guiStarted = false;
     
@@ -58,6 +62,12 @@ function playGameModeVideo() {
             requestAnimationFrame(() => {
                 gameGUI.style.opacity = '1';
             });
+            
+            const bgVideo = gameGUI.querySelector('.game-mode-bg-video');
+            if (bgVideo) {
+                loadVideoSources(bgVideo);
+                bgVideo.play().catch(err => console.warn('BG video play failed:', err));
+            }
         }
         
         if (currentTime >= videoDuration - 0.1) {
@@ -74,6 +84,54 @@ function playGameModeVideo() {
         videoContainer.classList.remove('active');
         gameGUI.classList.add('active');
     }, { once: true });
+}
+
+function skipGameModeVideo() {
+    const videoContainer = document.getElementById('gameModeVideo');
+    const video = document.getElementById('gameModeVideoPlayer');
+    const gameGUI = document.getElementById('gameModeGUI');
+    
+    if (video) {
+        video.pause();
+    }
+    
+    if (videoContainer) {
+        videoContainer.classList.remove('active');
+    }
+    
+    if (gameGUI) {
+        gameGUI.style.display = 'block';
+        gameGUI.classList.add('active');
+        
+        const bgVideo = gameGUI.querySelector('.game-mode-bg-video');
+        if (bgVideo) {
+            loadVideoSources(bgVideo);
+            bgVideo.play().catch(err => console.warn('BG video play failed:', err));
+        }
+    }
+}
+
+function backFromGameModeVideo() {
+    const videoContainer = document.getElementById('gameModeVideo');
+    const video = document.getElementById('gameModeVideoPlayer');
+    
+    if (video) {
+        video.pause();
+    }
+    
+    if (videoContainer) {
+        videoContainer.classList.remove('active');
+    }
+    
+    document.body.style.overflow = 'auto';
+}
+
+function exitGameMode() {
+    const gameGUI = document.getElementById('gameModeGUI');
+    if (gameGUI) {
+        gameGUI.classList.remove('active');
+        gameGUI.style.display = 'none';
+    }
 }
 
 function skipLoadingVideo() {
@@ -119,29 +177,42 @@ function closeImageModal() {
     }
 }
 
+function loadVideoSources(video) {
+    if (!video) return;
+    
+    const sources = video.querySelectorAll('source[data-src]');
+    sources.forEach(source => {
+        const dataSrc = source.getAttribute('data-src');
+        if (dataSrc && !source.src) {
+            source.src = dataSrc;
+            source.removeAttribute('data-src');
+        }
+    });
+    
+    const directSrc = video.getAttribute('data-video-src');
+    if (directSrc && !video.src) {
+        video.src = directSrc;
+        video.removeAttribute('data-video-src');
+    }
+    
+    video.load();
+}
+
 function initLazyVideos() {
     const lazyVideos = document.querySelectorAll('video.lazy-video');
     if (!lazyVideos.length) return;
-    const loadVideo = (video) => {
-        const source = video.querySelector('source');
-        const dataSrc = source ? source.getAttribute('data-src') : null;
-        if (dataSrc && !source.src) {
-            source.src = dataSrc;
-        }
-        const directSrc = video.getAttribute('data-video-src');
-        if (directSrc && !video.src) {
-            video.src = directSrc;
-        }
-        video.load();
-    };
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                loadVideo(entry.target);
-                observer.unobserve(entry.target);
+                const video = entry.target;
+                loadVideoSources(video);
+                video.play().catch(err => console.warn('Video autoplay failed:', err));
+                observer.unobserve(video);
             }
         });
     }, { rootMargin: '200px 0px', threshold: 0.1 });
+    
     lazyVideos.forEach(video => observer.observe(video));
 }
 
@@ -157,25 +228,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (skipBtn) {
             skipBtn.classList.add('hidden');
         }
-        if (loadingScreen && loadingVideo) {
+        if (loadingScreen) {
             loadingScreen.classList.add('hidden');
             setTimeout(() => {
                 body.classList.remove('loading');
                 if (loadingScreen.parentNode) {
                     loadingScreen.style.display = 'none';
                 }
+                initLazyVideos();
             }, 800);
         }
     }
 
     if (loadingVideo) {
-        loadingVideo.addEventListener('ended', hideLoadingScreen);
+        loadingVideo.addEventListener('ended', hideLoadingScreen, { once: true });
+        
         loadingVideo.addEventListener('loadeddata', () => {
             loadingVideo.play().catch(e => {
                 console.warn('Video autoplay prevented:', e);
                 hideLoadingScreen();
             });
-        });
+        }, { once: true });
 
         if (loadingVideo.readyState >= 2) {
             loadingVideo.play().catch(e => {
@@ -183,6 +256,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 hideLoadingScreen();
             });
         }
+        
+        setTimeout(() => {
+            if (body.classList.contains('loading')) {
+                console.warn('Loading timeout reached');
+                hideLoadingScreen();
+            }
+        }, 5000);
     } else {
         hideLoadingScreen();
     }
@@ -259,23 +339,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const scrollToTopBtn = document.querySelector('.scroll-to-top');
-        if (window.pageYOffset > 500) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
+        if (scrollToTopBtn) {
+            if (window.pageYOffset > 500) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
         }
     });
 
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            if (document.body.classList.contains('dark-mode')) {
-                nav.style.boxShadow = '0 2px 30px rgba(239, 83, 80, 0.2)';
+        if (nav) {
+            if (window.scrollY > 50) {
+                if (document.body.classList.contains('dark-mode')) {
+                    nav.style.boxShadow = '0 2px 30px rgba(239, 83, 80, 0.2)';
+                } else {
+                    nav.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+                }
             } else {
-                nav.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+                nav.style.boxShadow = '0 2px 20px var(--shadow-light)';
             }
-        } else {
-            nav.style.boxShadow = '0 2px 20px var(--shadow-light)';
         }
     });
 
@@ -308,11 +392,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.getElementById('gameModeWarning').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeGameModeWarning();
-        }
-    });
+    const gameModeWarning = document.getElementById('gameModeWarning');
+    if (gameModeWarning) {
+        gameModeWarning.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGameModeWarning();
+            }
+        });
+    }
 
     const projectImages = document.querySelectorAll('.project-img');
     const imageModal = document.getElementById('imageModal');
@@ -481,6 +568,4 @@ document.addEventListener('DOMContentLoaded', () => {
             setMotto(mottoIndex);
         });
     }
-
-    initLazyVideos();
 });
