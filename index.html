@@ -67,7 +67,7 @@
                     <div class="frame-corner frame-tr"></div>
                     <div class="frame-corner frame-bl"></div>
                     <div class="frame-corner frame-br"></div>
-                    <img src="profile.jpg" alt="Euwan Gabriel Abogadie" class="profile-img" onerror="this.src='https://via.placeholder.com/180/4CAF50/ffffff?text=EGA'">
+                    <img src="profile.jpg" alt="Euwan Gabriel Abogadie" class="profile-img" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                 </div>
             </div>
             <div class="header-text">
@@ -245,7 +245,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
                     <div class="project-image-frame">
-                        <img src="Images/StrokeSense.png" alt="StrokeSense preview" class="project-img" data-large="Images/StrokeSense.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=StrokeSense'">
+                        <img src="Images/StrokeSense.png" alt="StrokeSense preview" class="project-img" data-large="Images/StrokeSense.png" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                     </div>
                     <a href="https://euwan123.github.io/strokesense-landing-page/" target="_blank" class="project-button">
                         <i class="fas fa-external-link-alt"></i> View Live Website
@@ -269,7 +269,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> C#, Windows Forms, Visual Studio 2022</p>
                     <div class="project-image-frame">
-                        <img src="Images/PlanIT.png" alt="PlanIT preview" class="project-img" data-large="Images/PlanIT.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=PlanIT'">
+                        <img src="Images/PlanIT.png" alt="PlanIT preview" class="project-img" data-large="Images/PlanIT.png" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                     </div>
                     <a href="https://github.com/Euwan123/Group-7-System-PlanIT" target="_blank" class="project-button">
                         <i class="fab fa-github"></i> View Repository
@@ -293,7 +293,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> HTML, CSS, JavaScript, GitHub Pages</p>
                     <div class="project-image-frame">
-                        <img src="Images/portfolio-preview.png" alt="Portfolio preview" class="project-img" data-large="Images/portfolio-preview.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Portfolio'">
+                        <img src="Images/portfolio-preview.png" alt="Portfolio preview" class="project-img" data-large="Images/portfolio-preview.png" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                     </div>
                     <a href="https://github.com/Euwan123/my-portfolio" target="_blank" class="project-button">
                         <i class="fab fa-github"></i> View Repository
@@ -316,7 +316,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
                     <div class="project-image-frame">
-                        <img src="Images/bounceback.png" alt="Bounceback Basketball Simulator preview" class="project-img" data-large="Images/bounceback.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Bounceback'">
+                        <img src="Images/bounceback.png" alt="Bounceback Basketball Simulator preview" class="project-img" data-large="Images/bounceback.png" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                     </div>
                 </div>
             </div>
@@ -336,7 +336,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
                     <div class="project-image-frame">
-                        <img src="Images/Smart or Broke Simulator.png" alt="Smart or Broke Simulator preview" class="project-img" data-large="Images/Smart or Broke Simulator.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Smart+or+Broke'">
+                        <img src="Images/Smart or Broke Simulator.png" alt="Smart or Broke Simulator preview" class="project-img" data-large="Images/Smart or Broke Simulator.png" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                     </div>
                 </div>
             </div>
@@ -356,7 +356,7 @@
                     </p>
                     <p class="tech-stack"><i class="fas fa-tools"></i> Java, IntelliJ IDEA</p>
                     <div class="project-image-frame">
-                        <img src="Images/Daily Schedule Parser.png" alt="Daily Schedule Parser preview" class="project-img" data-large="Images/Daily Schedule Parser.png" onerror="this.src='https://via.placeholder.com/600x360/ef5350/ffffff?text=Schedule+Parser'">
+                        <img src="Images/Daily Schedule Parser.png" alt="Daily Schedule Parser preview" class="project-img" data-large="Images/Daily Schedule Parser.png" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                     </div>
                 </div>
             </div>
@@ -550,7 +550,7 @@
         <button class="back-video-btn" onclick="backFromGameModeVideo()" title="Go Back">
             <i class="fas fa-arrow-left"></i>
         </button>
-        <video id="gameModeVideoPlayer" muted playsinline preload="auto" class="game-mode-video">
+        <video id="gameModeVideoPlayer" muted playsinline preload="metadata" class="game-mode-video">
             <source src="Futuristic HUD UI Visuals Sound Design.mp4" type="video/mp4">
         </video>
     </div>
@@ -598,7 +598,7 @@
     <footer>
         <div class="footer-video-wrapper">
             <div class="footer-video-frame">
-                <video class="footer-video" autoplay muted loop playsinline>
+                <video class="footer-video" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none';">
                     <source src="THIS IS 4K ANIME   YOUR NAME 2160P 60FPS.mp4" type="video/mp4">
                 </video>
                 <div class="footer-overlay">
