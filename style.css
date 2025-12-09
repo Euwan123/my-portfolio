@@ -523,8 +523,9 @@ body.dark-mode .shape {
     width: auto;
     height: auto;
     z-index: 0;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translateZ(0);
     filter: brightness(40%);
+    will-change: auto;
 }
 
 .header-content {
