@@ -229,7 +229,7 @@ function updateGameStats() {
 function initLazyVideos() {
     const bg = document.querySelector('.game-mode-bg-video');
     if (!bg) return;
-    bg.preload = 'auto';
+    bg.preload = 'metadata';
     bg.autoplay = true;
     bg.muted = true;
     bg.playsInline = true;
@@ -254,14 +254,20 @@ document.addEventListener('DOMContentLoaded', () => {
         loadLazyVideo(bgVideo, true);
     }
 
-    // Light jitter for ping/fps to look alive
+    // Light jitter for ping/fps to look alive (optimized with RAF)
     const pingEl = document.getElementById('metricPing');
     const fpsEl = document.getElementById('metricFps');
     const chipPing = document.getElementById('chipPing');
     const chipFps = document.getElementById('chipFps');
     let basePing = 18;
     let baseFps = 144;
-    setInterval(() => {
+    let lastUpdate = 0;
+    function updateMetrics(timestamp) {
+        if (timestamp - lastUpdate < 2000) {
+            requestAnimationFrame(updateMetrics);
+            return;
+        }
+        lastUpdate = timestamp;
         const jitterPing = Math.max(12, basePing + (Math.random() * 6 - 3));
         const jitterFps = Math.max(100, baseFps + (Math.random() * 16 - 8));
         const pingText = `${jitterPing.toFixed(0)} ms`;
@@ -270,5 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (chipPing) chipPing.textContent = pingText;
         if (fpsEl) fpsEl.textContent = fpsText;
         if (chipFps) chipFps.textContent = fpsText;
-    }, 1400);
+        requestAnimationFrame(updateMetrics);
+    }
+    requestAnimationFrame(updateMetrics);
 });
